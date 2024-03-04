@@ -14,7 +14,7 @@ interface TogglePasswordProps {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ type = "text", className, ...props }, ref) => {
+  ({ type = "text", variant, className, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleTogglePasswordVisibility = () => {
@@ -37,6 +37,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           className={cn(
             inputVariants({
               className: type === "password" ? "pr-12" : className,
+              variant,
             })
           )}
           {...props}
