@@ -1,4 +1,4 @@
-import { ComponentProps, Ref } from "react";
+import { ComponentProps, PropsWithChildren } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 export const buttonVariants = cva(
@@ -32,7 +32,6 @@ export const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends ComponentProps<"button">,
-    VariantProps<typeof buttonVariants> {
-  ref?: Ref<HTMLButtonElement>;
-}
+  extends PropsWithChildren<
+    ComponentProps<"button"> & VariantProps<typeof buttonVariants>
+  > {}
