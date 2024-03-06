@@ -3,7 +3,7 @@
 import { forwardRef } from "react";
 
 // interface
-import { ButtonTabsProps, buttonTabsVariant } from "@/app/_types/cva";
+import { ButtonTabsProps, buttonTabsVariants } from "@/app/_types/cva";
 import { cn } from "@/app/_utils/cn";
 
 const ButtonTabs = forwardRef<HTMLButtonElement, ButtonTabsProps>(
@@ -11,7 +11,7 @@ const ButtonTabs = forwardRef<HTMLButtonElement, ButtonTabsProps>(
     return (
       <button
         ref={ref}
-        className={cn(buttonTabsVariant({ variant, isActive, className }))}
+        className={cn(buttonTabsVariants({ variant, isActive, className }))}
         {...props}
       >
         {children}
