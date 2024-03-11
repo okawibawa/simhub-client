@@ -8,9 +8,8 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      md: "37.5rem", // 600px
-      lg: "56.25rem", // 900px
-      xl: "75rem", // 1200px
+      md: "26.875rem", // 430px
+      lg: "61.875rem", // 990px
     },
     extend: {
       colors: {

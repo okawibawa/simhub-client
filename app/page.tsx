@@ -4,8 +4,10 @@ import { Button, Input } from "./_components/atoms";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-white">
-      <Input placeholder="Email" isError />
+    <main className="grid-content">
+      <div className="bg-yellow-400 full-width">
+        <p>hello</p>
+      </div>
     </main>
   );
 }
