@@ -6,6 +6,7 @@ import { Select } from "./_components/atoms";
 export default function Home() {
   return (
     <main className="grid-content h-full bg-slate-400">
+      <h1>Testing components.</h1>
       <div className="bg-yellow-400 full-width">
         <Select
           onChange={(value) => console.log({ value })}
