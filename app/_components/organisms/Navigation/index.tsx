@@ -1,11 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { IconLanguage, IconMenu2 } from "@tabler/icons-react";
 
+// atoms
 import { Anchor, Button, Select } from "@/app/_components/atoms";
 
+import { NavigationMobile } from "./NavigationMobile";
+
 export const Navigation = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleIsMobileMenuOpen = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full py-[18px]">
       <div className="grid-content">
@@ -43,10 +53,20 @@ export const Navigation = () => {
               Login
             </Button>
             <Button>Register</Button>
-            <IconMenu2 className="block lg:hidden" size={24} color="white" />
+            <IconMenu2
+              className="block lg:hidden"
+              size={24}
+              color="white"
+              onClick={handleIsMobileMenuOpen}
+            />
           </div>
         </div>
       </div>
+
+      <NavigationMobile
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={handleIsMobileMenuOpen}
+      />
     </nav>
   );
 };
