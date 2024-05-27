@@ -1,7 +1,9 @@
+"use client";
+
 import { forwardRef } from "react";
 
 // utils
-import { cn } from "@/app/_utils/cn";
+import { cn } from "@/app/_utils";
 
 // types
 import { ButtonProps, buttonVariants } from "@/app/_types/cva";

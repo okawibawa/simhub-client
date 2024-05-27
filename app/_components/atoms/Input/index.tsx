@@ -1,8 +1,10 @@
+"use client";
+
 import { forwardRef, useMemo, useState } from "react";
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
 
 // utils
-import { cn } from "@/app/_utils/cn";
+import { cn } from "@/app/_utils";
 
 // types
 import { inputVariants, InputProps } from "@/app/_types/cva";

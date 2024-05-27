@@ -2,9 +2,11 @@
 
 import { forwardRef } from "react";
 
+// utils
+import { cn } from "@/app/_utils";
+
 // interface
 import { ButtonTabsProps, buttonTabsVariants } from "@/app/_types/cva";
-import { cn } from "@/app/_utils/cn";
 
 const ButtonTabs = forwardRef<HTMLButtonElement, ButtonTabsProps>(
   ({ variant, isActive, className, children, ...props }, ref) => {

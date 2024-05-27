@@ -1,7 +1,9 @@
+"use client";
+
 import { forwardRef } from "react";
 
 // utils
-import { cn } from "@/app/_utils/cn";
+import { cn } from "@/app/_utils";
 
 // interfaces
 import {
