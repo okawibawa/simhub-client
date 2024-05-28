@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { IconLanguage, IconMenu2 } from "@tabler/icons-react";
 
@@ -8,20 +8,54 @@ import { IconLanguage, IconMenu2 } from "@tabler/icons-react";
 import { Anchor, Button, Select } from "@/app/_components/atoms";
 
 import { NavigationMobile } from "./NavigationMobile";
+import { set } from "zod";
 
 export const Navigation = () => {
+  const [pastYMousePosition, setPastYMousePosition] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (typeof window !== "undefined") {
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 52) {
+            setPastYMousePosition(true);
+            return;
+          }
+
+          setPastYMousePosition(false);
+        });
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleIsMobileMenuOpen = () => {
     setIsMobileMenuOpen((prev) => !prev);
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full py-[18px]">
+    <nav
+      className={`fixed top-0 left-0 w-full py-[18px] transition-all duration-200 ${
+        pastYMousePosition
+          ? "bg-zinc-900 shadow-lg shadow-zinc-400/5"
+          : "bg-transparent"
+      }`}
+    >
       <div className="grid-content">
         <div className="flex items-center">
           <div className="flex-1">
-            <Image src="/logo.svg" width={170} height={32} alt="logo" />
+            <Anchor href="/">
+              <Image
+                src="/simhub-logo-light.svg"
+                width={110}
+                height={32}
+                alt="logo"
+              />
+            </Anchor>
           </div>
 
           <div className="space-x-2 hidden lg:block">
