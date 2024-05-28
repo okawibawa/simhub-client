@@ -1,7 +1,7 @@
-import { useCountryTabs } from "@/app/_stores";
+import { useCountryTabsStore } from "@/app/_stores";
 
 export const useCountryTabsHook = () => {
-  const { countryTab, setCountryTab } = useCountryTabs();
+  const { countryTab, setCountryTab } = useCountryTabsStore();
 
   const handleSelectTab = (tab: "local" | "global") => {
     setCountryTab(tab);

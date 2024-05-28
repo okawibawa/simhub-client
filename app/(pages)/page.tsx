@@ -15,7 +15,7 @@ import Loading from "./loading";
 
 export default async function Home() {
   return (
-    <main className="h-[200vh]">
+    <main className="h-dvh">
       <section className="relative flex h-full max-h-[420px] w-full place-content-center items-center justify-center md:max-h-[520px]">
         <Image
           src="/home-page-hero.jpg"

@@ -5,7 +5,7 @@ interface CountryTabsState {
   setCountryTab: (countryTab: "local" | "global") => void;
 }
 
-export const useCountryTabs = create<CountryTabsState>((set) => ({
+export const useCountryTabsStore = create<CountryTabsState>((set) => ({
   countryTab: "local",
   setCountryTab: (countryTab: "local" | "global") => set({ countryTab }),
 }));

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 // stores
-import { useCountryTabs } from "@/app/_stores";
+import { useCountryTabsStore } from "@/app/_stores";
 
 interface CountryGridProps {
   countries: { name: string; code: string; flag: string }[];
 }
 
 export const useCountryGrid = ({ countries }: CountryGridProps) => {
-  const { countryTab } = useCountryTabs();
+  const { countryTab } = useCountryTabsStore();
 
   const [filteredCountries, setFilteredCountries] =
     useState<{ name: string; code: string; flag: string }[]>(countries);
