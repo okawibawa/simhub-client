@@ -21,7 +21,14 @@ export const NavigationMobile = ({
   useEffect(() => {
     if (!isMobileMenuOpen) {
       setIsLanguageButtonOpen(false);
+      return;
     }
+
+    window.document.body.style.overflow = "hidden";
+
+    return () => {
+      window.document.body.style.overflow = "auto";
+    };
   }, [isMobileMenuOpen]);
 
   const handleIsLanguageButtonOpen = () => {
@@ -37,7 +44,7 @@ export const NavigationMobile = ({
       }`}
     >
       <div className="flex items-center justify-between mb-5 h-[42px]">
-        <Image src="/logo.svg" width={170} height={32} alt="logo" />
+        <Image src="/simhub-logo-dark.svg" width={110} height={32} alt="logo" />
         <IconX size={24} color="black" onClick={setIsMobileMenuOpen} />
       </div>
 
