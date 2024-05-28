@@ -37,31 +37,31 @@ export const NavigationMobile = ({
 
   return (
     <div
-      className={`absolute bg-white h-dvh py-[18px] px-5 transform transition-all duration-500 z-10 ${
+      className={`absolute z-10 h-dvh transform overflow-y-scroll bg-white px-5 py-[18px] transition-all duration-500 ${
         isMobileMenuOpen
-          ? "translate-x-0 opacity-1 z-0 inset-0"
-          : "translate-x-full opacity-0 -z-10 inset-0"
+          ? "opacity-1 inset-0 z-0 translate-x-0"
+          : "inset-0 -z-10 translate-x-full opacity-0"
       }`}
     >
-      <div className="flex items-center justify-between mb-5 h-[42px]">
+      <div className="mb-5 flex h-[42px] items-center justify-between">
         <Image src="/simhub-logo-dark.svg" width={110} height={32} alt="logo" />
         <IconX size={24} color="black" onClick={setIsMobileMenuOpen} />
       </div>
 
-      <Button className="w-full mb-2">Login</Button>
+      <Button className="mb-2 w-full">Login</Button>
 
       <div className="divide-y divide-solid divide-zinc-200">
-        <Anchor href="#" className="block mb-2 py-4 text-zinc-900" size="lg">
+        <Anchor href="#" className="mb-2 block py-4 text-zinc-900" size="lg">
           Destination
         </Anchor>
-        <Anchor href="#" className="block mb-2 py-4 text-zinc-900" size="lg">
+        <Anchor href="#" className="mb-2 block py-4 text-zinc-900" size="lg">
           How it Works
         </Anchor>
-        <Anchor href="#" className="block mb-2 py-4 text-zinc-900" size="lg">
+        <Anchor href="#" className="mb-2 block py-4 text-zinc-900" size="lg">
           Contact Us
         </Anchor>
         <button
-          className="w-full text-left py-4 text-zinc-900 leading-[18px] text-base flex items-center justify-between"
+          className="flex w-full items-center justify-between py-4 text-left text-base leading-[18px] text-zinc-900"
           onClick={handleIsLanguageButtonOpen}
         >
           Language
@@ -74,16 +74,16 @@ export const NavigationMobile = ({
         </button>
 
         <div
-          className={`divide-y divide-solid divide-zinc-200 relative transform transition-all duration-200 ${
+          className={`relative transform divide-y divide-solid divide-zinc-200 transition-all duration-200 ${
             isLanguageButtonOpen
-              ? "top-0 opacity-1 z-0"
-              : "-top-10 opacity-0 -z-10"
+              ? "opacity-1 top-0 z-0"
+              : "-top-10 -z-10 opacity-0"
           }`}
         >
-          <button className="w-full text-left py-4 text-zinc-900 leading-[18px] text-base px-3">
+          <button className="w-full px-3 py-4 text-left text-base leading-[18px] text-zinc-900">
             English
           </button>
-          <button className="w-full text-left py-4 text-zinc-900 leading-[18px] text-base px-3">
+          <button className="w-full px-3 py-4 text-left text-base leading-[18px] text-zinc-900">
             Spanish
           </button>
         </div>
