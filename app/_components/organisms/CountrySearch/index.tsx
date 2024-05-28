@@ -1,21 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { IconSearch } from "@tabler/icons-react";
 
+// hooks
+import { useCountrySearchHook } from "@/app/_hooks";
+
 export const CountrySearch = () => {
-  const [randomCountry, setRandomCountry] = useState("Canada");
-
-  useEffect(() => {
-    const COUNTRIES = ["Canada", "Tokyo", "United States", "France", "Germany"];
-
-    const countryRandomizer = setInterval(() => {
-      const randomIndex = Math.floor(Math.random() * COUNTRIES.length);
-      setRandomCountry(COUNTRIES[randomIndex]);
-    }, 5000);
-
-    return () => clearInterval(countryRandomizer);
-  }, []);
+  const { randomCountry } = useCountrySearchHook();
 
   return (
     <div className="relative mx-auto mb-4 w-full max-w-[580px]">

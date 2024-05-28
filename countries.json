@@ -1,0 +1,52 @@
+[
+  {
+    "name": "United States/Canada",
+    "code": "GB",
+    "flag": "/flags/global.png"
+  },
+  {
+    "name": "13 Asians Countries",
+    "code": "GB",
+    "flag": "/flags/global.png"
+  },
+  {
+    "name": "Hong Kong/Macau",
+    "code": "GB",
+    "flag": "/flags/global.png"
+  },
+  {
+    "name": "United States",
+    "code": "US",
+    "flag": "/flags/us.png"
+  },
+  {
+    "name": "Japan",
+    "code": "JP",
+    "flag": "/flags/jp.png"
+  },
+  {
+    "name": "China",
+    "code": "CN",
+    "flag": "/flags/cn.png"
+  },
+  {
+    "name": "South Korea",
+    "code": "KR",
+    "flag": "/flags/kr.png"
+  },
+  {
+    "name": "Indonesia",
+    "code": "ID",
+    "flag": "/flags/id.png"
+  },
+  {
+    "name": "Thailand",
+    "code": "TH",
+    "flag": "/flags/th.png"
+  },
+  {
+    "name": "Germany",
+    "code": "DE",
+    "flag": "/flags/de.png"
+  }
+]
