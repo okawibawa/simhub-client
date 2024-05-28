@@ -17,7 +17,7 @@ export const Navigation = () => {
     const handleScroll = () => {
       if (typeof window !== "undefined") {
         window.addEventListener("scroll", () => {
-          if (window.scrollY > 52) {
+          if (window.scrollY > 2) {
             setPastYMousePosition(true);
             return;
           }
@@ -38,7 +38,7 @@ export const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full py-[18px] transition-all duration-200 ${
+      className={`fixed left-0 top-0 z-50 w-full py-[18px] transition-all duration-200 ${
         pastYMousePosition
           ? "bg-zinc-900 shadow-lg shadow-zinc-400/5"
           : "bg-transparent"
@@ -57,7 +57,7 @@ export const Navigation = () => {
             </Anchor>
           </div>
 
-          <div className="space-x-2 hidden lg:block">
+          <div className="hidden space-x-2 lg:block">
             <Anchor href="#" className="px-3">
               Destination
             </Anchor>
@@ -78,10 +78,10 @@ export const Navigation = () => {
             <option value="es">Spanish</option>
           </Select>
 
-          <div className="space-x-4 flex items-center">
+          <div className="flex items-center space-x-4">
             <Button
               variant="secondary"
-              className="hover:bg-zinc-50/10 outline-white hidden lg:block"
+              className="hidden outline-white hover:bg-zinc-50/10 lg:block"
             >
               Login
             </Button>
