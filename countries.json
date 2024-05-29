@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "name": "United States",
+    "code": "US",
+    "flag": "/flags/us.png"
+  }
+]

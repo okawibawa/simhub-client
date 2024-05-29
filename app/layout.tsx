@@ -12,6 +12,9 @@ export const metadata: Metadata = {
 // organism
 import { Navigation } from "@/app/_components/organisms/Navigation";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default function RootLayout({
   children,
 }: Readonly<{
