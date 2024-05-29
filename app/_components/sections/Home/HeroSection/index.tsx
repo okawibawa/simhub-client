@@ -9,13 +9,15 @@ import { CountrySearch } from "@/app/_components/organisms";
 
 export const HeroSection = () => {
   return (
-    <section className="relative flex h-full max-h-[420px] w-full place-content-center items-center justify-center md:max-h-[520px]">
+    <section className="relative flex h-screen max-h-[420px] w-full place-content-center items-center justify-center md:max-h-[520px]">
       <Image
         src="/home-page-hero.jpg"
         fill
-        objectFit="cover"
         className="absolute -z-10"
         alt="simhub hero image"
+        style={{
+          objectFit: "cover",
+        }}
       />
 
       <div className="grid-content text-center">

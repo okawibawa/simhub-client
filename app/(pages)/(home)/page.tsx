@@ -9,7 +9,7 @@ import {
 
 export default async function Home() {
   return (
-    <main className="h-dvh">
+    <main className="h-full">
       <HeroSection />
       <DestinationCountriesSection />
       <AdvantagesSection />
