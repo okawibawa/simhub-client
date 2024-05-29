@@ -13,7 +13,7 @@ export const ReviewSection = () => {
         Story from our beloved customers
       </Typography>
 
-      <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
         {REVIEWS.map((review) => (
           <div
             key={review.name}
