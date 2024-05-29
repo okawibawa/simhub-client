@@ -1,7 +1,9 @@
+"use client";
+
 import { createElement } from "react";
 
 // utils
-import { cn } from "@/app/_utils/cn";
+import { cn } from "@/app/_utils";
 
 // interfaces
 import { TypographyProps, typographyVariants } from "@/app/_types/cva";

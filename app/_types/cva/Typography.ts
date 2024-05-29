@@ -1,15 +1,15 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { ComponentProps } from "react";
+import { ComponentProps, PropsWithChildren } from "react";
 
 export const typographyVariants = cva("text-zinc-50", {
   variants: {
     as: {
       headline: [
-        "text-[49px]",
-        "leading-[53px]",
-        "md:text-[54px]",
-        "md:leading-[72px]",
-        "font-bold",
+        "text-[32px]", // uses value from subheading2
+        "leading-[42px]", // uses value from subheading2
+        "md:text-[44px]",
+        "md:leading-[56px]",
+        "font-semibold",
       ],
       subheading1: [
         "text-[37px]",
@@ -70,8 +70,10 @@ export const typographyVariants = cva("text-zinc-50", {
 });
 
 export interface TypographyProps
-  extends VariantProps<typeof typographyVariants>,
-    ComponentProps<"p">,
-    ComponentProps<"h1">,
-    ComponentProps<"h2">,
-    ComponentProps<"h3"> {}
+  extends PropsWithChildren<
+    VariantProps<typeof typographyVariants> &
+      ComponentProps<"p"> &
+      ComponentProps<"h1"> &
+      ComponentProps<"h2"> &
+      ComponentProps<"h3">
+  > {}

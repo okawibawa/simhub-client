@@ -1,4 +1,4 @@
-import { ComponentProps, ReactNode } from "react";
+import { ComponentProps, PropsWithChildren, ReactNode } from "react";
 import { LinkProps } from "next/link";
 import { cva, VariantProps } from "class-variance-authority";
 
@@ -21,8 +21,7 @@ export interface AnchorProps extends VariantProps<typeof anchorVariants> {
   isExternal?: boolean;
 }
 
-export interface ExternalAnchorProps extends AnchorProps, ComponentProps<"a"> {
-  children: ReactNode;
-}
+export interface ExternalAnchorProps
+  extends PropsWithChildren<AnchorProps & ComponentProps<"a">> {}
 
 export interface InternalAnchorProps extends AnchorProps, LinkProps {}

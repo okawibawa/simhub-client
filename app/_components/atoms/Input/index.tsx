@@ -1,8 +1,10 @@
+"use client";
+
 import { forwardRef, useMemo, useState } from "react";
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
 
 // utils
-import { cn } from "@/app/_utils/cn";
+import { cn } from "@/app/_utils";
 
 // types
 import { inputVariants, InputProps } from "@/app/_types/cva";
@@ -14,7 +16,7 @@ interface TogglePasswordProps {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ type = "text", variant, className, ...props }, ref) => {
+  ({ type = "text", variant, isError, className, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleTogglePasswordVisibility = () => {
@@ -38,6 +40,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             inputVariants({
               className: type === "password" ? "pr-12" : className,
               variant,
+              isError,
             })
           )}
           {...props}
