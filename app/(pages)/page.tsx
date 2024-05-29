@@ -3,6 +3,7 @@ import {
   HeroSection,
   DestinationCountriesSection,
   AdvantagesSection,
+  GuideSection,
 } from "@/app/_components/sections/Home";
 
 export default async function Home() {
@@ -11,6 +12,7 @@ export default async function Home() {
       <HeroSection />
       <DestinationCountriesSection />
       <AdvantagesSection />
+      <GuideSection />
     </main>
   );
 }
