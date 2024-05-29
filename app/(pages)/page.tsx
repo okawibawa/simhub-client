@@ -9,7 +9,7 @@ import { CountrySearch } from "@/app/_components/organisms";
 
 // sections
 import { Countries } from "@/app/_components/sections";
-import { CountryTabs } from "@/app/_components/sections/Countries/CountryTabs";
+import { CountryTabs } from "@/app/_components/sections/Home/Countries/CountryTabs";
 
 import Loading from "./loading";
 

@@ -1,5 +1,4 @@
 import { readFile } from "fs/promises";
-import { Suspense } from "react";
 
 // atoms
 import { CountryGrid } from "./CountryGrid";
