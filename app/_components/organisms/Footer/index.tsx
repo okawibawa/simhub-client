@@ -17,9 +17,8 @@ export const Footer = () => {
           />
 
           <Typography as="body5" className="mb-8 text-zinc-400">
-            SimHub provide electronic SIM (eSIM) for customers who want to
-            travel around the world with super hassle-free & affordable
-            connectivity
+            SimHub provide the best and tailor-made eSIM plan for your seamless
+            and joyful traveling experience.
           </Typography>
 
           <div>
