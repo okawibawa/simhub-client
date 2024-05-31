@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { IconLanguage, IconMenu2 } from "@tabler/icons-react";
 
 // atoms
@@ -12,6 +13,8 @@ import { NavigationMobile } from "./NavigationMobile";
 export const Navigation = () => {
   const [pastYMousePosition, setPastYMousePosition] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +42,7 @@ export const Navigation = () => {
   return (
     <nav
       className={`fixed left-0 top-0 z-50 w-full py-[18px] transition-all duration-200 ${
-        pastYMousePosition
+        pathname !== "/" || pastYMousePosition
           ? "bg-zinc-900 shadow-lg shadow-zinc-400/5"
           : "bg-transparent"
       }`}

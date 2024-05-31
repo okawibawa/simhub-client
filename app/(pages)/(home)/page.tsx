@@ -1,3 +1,6 @@
+// organisms
+import { Cta } from "@/app/_components/organisms";
+
 // sections
 import {
   HeroSection,
@@ -15,6 +18,7 @@ export default async function Home() {
       <AdvantagesSection />
       <GuideSection />
       <ReviewSection />
+      <Cta />
     </main>
   );
 }
