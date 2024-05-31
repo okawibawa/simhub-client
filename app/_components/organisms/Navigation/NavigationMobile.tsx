@@ -44,7 +44,14 @@ export const NavigationMobile = ({
       }`}
     >
       <div className="mb-5 flex h-[42px] items-center justify-between">
-        <Image src="/simhub-logo-dark.svg" width={110} height={32} alt="logo" />
+        <Image
+          src="/simhub-logo-dark.svg"
+          width={110}
+          placeholder="blur"
+          height={32}
+          alt="logo"
+          blurDataURL="/simhub-logo-dark.svg"
+        />
         <IconX size={24} color="black" onClick={setIsMobileMenuOpen} />
       </div>
 

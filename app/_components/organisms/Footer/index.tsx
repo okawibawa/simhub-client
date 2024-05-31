@@ -14,6 +14,8 @@ export const Footer = () => {
             width={166}
             height={24}
             className="mb-5"
+            placeholder="blur"
+            blurDataURL="/simhub-logo-light.svg"
           />
 
           <Typography as="body5" className="mb-8 text-zinc-400">
@@ -32,6 +34,8 @@ export const Footer = () => {
                   src="/mastercard.png"
                   alt="Mastercard"
                   fill
+                  placeholder="blur"
+                  blurDataURL="/mastercard.png"
                   style={{
                     objectFit: "contain",
                   }}
@@ -43,6 +47,8 @@ export const Footer = () => {
                   src="/paypal.png"
                   alt="paypal"
                   fill
+                  placeholder="blur"
+                  blurDataURL="/paypal.png"
                   style={{
                     objectFit: "contain",
                   }}
@@ -54,6 +60,8 @@ export const Footer = () => {
                   src="/visa.png"
                   alt="visa"
                   fill
+                  placeholder="blur"
+                  blurDataURL="/visa.png"
                   style={{
                     objectFit: "contain",
                   }}

@@ -13,6 +13,8 @@ export const Cta = () => {
           fill
           style={{ objectFit: "cover" }}
           className="brightness-50"
+          placeholder="blur"
+          blurDataURL="/cta-background.jpg"
         />
       </div>
 

@@ -56,6 +56,8 @@ export const Navigation = () => {
                 width={110}
                 height={32}
                 alt="logo"
+                placeholder="blur"
+                blurDataURL="/simhub-logo-light.svg"
               />
             </Anchor>
           </div>
