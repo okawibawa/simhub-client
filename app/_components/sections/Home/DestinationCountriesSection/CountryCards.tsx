@@ -28,7 +28,7 @@ export const CountryCard = ({ countries }: CountryGridProps) => {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-x-3 gap-y-4 md:grid-cols-3 lg:grid-cols-4">
+    <>
       {filteredCountries.map((country, index) => (
         <Anchor
           key={index}
@@ -40,6 +40,6 @@ export const CountryCard = ({ countries }: CountryGridProps) => {
           <IconArrowRight size={24} color="white" />
         </Anchor>
       ))}
-    </div>
+    </>
   );
 };
