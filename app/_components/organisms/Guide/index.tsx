@@ -6,7 +6,7 @@ import { Typography } from "@/app/_components/atoms";
 // constants
 import { GUIDES } from "@/app/_constants";
 
-export const GuideSection = () => {
+export const Guide = () => {
   return (
     <section className="full-width bg-black py-24 text-center">
       <Typography as="subheading2" className="mb-5">
