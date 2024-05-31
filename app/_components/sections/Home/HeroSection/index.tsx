@@ -15,8 +15,7 @@ export const HeroSection = () => {
         fill
         className="absolute -z-10"
         alt="simhub hero image"
-        placeholder="blur"
-        blurDataURL="/home-page-hero.jpg"
+        priority={true}
         style={{
           objectFit: "cover",
         }}
