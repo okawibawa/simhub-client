@@ -21,7 +21,7 @@ export const CountryCard = ({ countries }: CountryGridProps) => {
 
   if (filteredCountries.length === 0) {
     return (
-      <div className="flex w-full items-center justify-center rounded-lg bg-zinc-900 px-5 py-10 text-white">
+      <div className="w-full rounded-lg bg-zinc-900 px-5 py-10 text-center text-white">
         No countries available
       </div>
     );
