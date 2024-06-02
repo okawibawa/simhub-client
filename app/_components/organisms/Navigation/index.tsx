@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { IconLanguage, IconMenu2 } from "@tabler/icons-react";
@@ -9,6 +9,7 @@ import { IconLanguage, IconMenu2 } from "@tabler/icons-react";
 import { Anchor, Button, Select } from "@/app/_components/atoms";
 
 import { NavigationMobile } from "./NavigationMobile";
+import { set } from "zod";
 
 export const Navigation = () => {
   const [pastYMousePosition, setPastYMousePosition] = useState(false);
@@ -41,12 +42,18 @@ export const Navigation = () => {
     setIsMobileMenuOpen((prev) => !prev);
   };
 
-  useEffect(() => {
-    if (navRef.current) {
-      setNavigationBarHeight(navRef.current.offsetHeight);
-    }
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== "undefined") {
+        setNavigationBarHeight(navRef.current?.offsetHeight || 0);
+      }
+    };
 
-    return () => setNavigationBarHeight(0);
+    setNavigationBarHeight(navRef.current?.offsetHeight || 0);
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
