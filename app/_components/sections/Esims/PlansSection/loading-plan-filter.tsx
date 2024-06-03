@@ -1,5 +1,3 @@
-import { ButtonTabs } from "@/app/_components/atoms";
-
 const loading = () => {
   return (
     <div className="flex items-center space-x-5 overflow-scroll md:overflow-hidden">
