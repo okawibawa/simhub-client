@@ -9,7 +9,6 @@ import { IconLanguage, IconMenu2 } from "@tabler/icons-react";
 import { Anchor, Button, Select } from "@/app/_components/atoms";
 
 import { NavigationMobile } from "./NavigationMobile";
-import { set } from "zod";
 
 export const Navigation = () => {
   const [pastYMousePosition, setPastYMousePosition] = useState(false);

@@ -1,4 +1,4 @@
-import { IconAccessibleOffFilled, IconArrowLeft } from "@tabler/icons-react";
+import { IconArrowLeft } from "@tabler/icons-react";
 
 // atoms
 import { Button, Typography } from "@/app/_components/atoms";
