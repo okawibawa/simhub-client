@@ -13,7 +13,7 @@ export default function EsimsDetailPlan({
   params: { slug: string };
 }) {
   return (
-    <main className="full-width h-full bg-black py-5">
+    <main className="full-width bg-black py-5">
       <section>
         <Typography as="body4" className="mb-6 flex items-center gap-2">
           <IconArrowLeft />

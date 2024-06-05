@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function Esims() {
   return (
-    <main className="h-full">
+    <main>
       <section className="bg-black">
         <div className="relative bottom-0 mb-6 h-[240px] max-h-[240px] w-full">
           <Image

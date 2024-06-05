@@ -16,7 +16,7 @@ export const PaymentMethod = () => {
   };
 
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-5">
+    <div className="h-fit rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-5">
       <div className="mb-2 flex items-center justify-between">
         <Typography as="body3" className="font-semibold">
           Payment Method

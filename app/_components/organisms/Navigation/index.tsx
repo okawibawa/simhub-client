@@ -5,15 +5,21 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { IconLanguage, IconMenu2 } from "@tabler/icons-react";
 
+// stores
+import { useNavigationHeightStore } from "@/app/_stores";
+
 // atoms
 import { Anchor, Button, Select } from "@/app/_components/atoms";
 
 import { NavigationMobile } from "./NavigationMobile";
+import { set } from "zod";
 
 export const Navigation = () => {
+  const { navigationBarHeight, setNavigationBarHeight } =
+    useNavigationHeightStore();
+
   const [pastYMousePosition, setPastYMousePosition] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [navigationBarHeight, setNavigationBarHeight] = useState(0);
 
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
@@ -53,7 +59,9 @@ export const Navigation = () => {
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [setNavigationBarHeight]);
+
+  const pathnameToExcludeDivPlaceholder = ["/", "/checkout/esim"];
 
   return (
     <>
@@ -68,7 +76,7 @@ export const Navigation = () => {
         <div className="grid-content">
           <div className="flex items-center">
             <div className="flex-1">
-              <Anchor href="/">
+              <Anchor href="/" className="inline-block w-fit">
                 <Image
                   src="/simhub-logo-light.svg"
                   width={110}
@@ -126,7 +134,7 @@ export const Navigation = () => {
       </nav>
       <div
         style={{
-          height: `${pathname !== "/" ? navigationBarHeight : 0}px`,
+          height: `${!pathnameToExcludeDivPlaceholder.includes(pathname) ? navigationBarHeight : 0}px`,
         }}
       />
     </>

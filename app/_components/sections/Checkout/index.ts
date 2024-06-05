@@ -1,2 +1,1 @@
-export * from "./PaymentMethod";
-export * from "./OrderSummary";
+export * from "./CheckoutSection";

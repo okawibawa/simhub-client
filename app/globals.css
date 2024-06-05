@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html,
+  body,
+  #__next {
+    height: 100%;
+    width: 100%;
+  }
+}
+
 :root {
   --padding-inline: 1.25rem;
   --max-content-width: 73.75rem;
