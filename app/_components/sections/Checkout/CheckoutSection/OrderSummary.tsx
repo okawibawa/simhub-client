@@ -52,13 +52,14 @@ export const OrderSummary = () => {
           onChange={handleEsimSupportCheckboxChange}
         />
         <div
-          className={`h-6 w-6 rounded-md border p-1 ${isEsimSupportCheckboxChecked ? "border-orange-500" : "border-white"}`}
+          onClick={handleEsimSupportCheckboxChange}
+          className={`h-6 w-6 cursor-pointer rounded-md border p-1 ${isEsimSupportCheckboxChecked ? "border-orange-500" : "border-white"}`}
         >
           {isEsimSupportCheckboxChecked ? (
             <div className="h-full w-full rounded-sm bg-orange-500" />
           ) : null}
         </div>
-        <label htmlFor="esim-support">
+        <label htmlFor="esim-support" className="cursor-pointer">
           <Typography
             as="body5"
             className="select-none font-normal text-zinc-300"

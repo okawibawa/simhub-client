@@ -12,7 +12,6 @@ import { useNavigationHeightStore } from "@/app/_stores";
 import { Anchor, Button, Select } from "@/app/_components/atoms";
 
 import { NavigationMobile } from "./NavigationMobile";
-import { set } from "zod";
 
 export const Navigation = () => {
   const { navigationBarHeight, setNavigationBarHeight } =

@@ -17,7 +17,7 @@ export const PaymentMethod = () => {
 
   return (
     <div className="h-fit rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-5">
-      <div className="mb-2 flex items-center justify-between">
+      <div className="mb-2 flex flex-col items-start justify-between gap-2 md:flex-row md:items-center md:gap-0">
         <Typography as="body3" className="font-semibold">
           Payment Method
         </Typography>
@@ -50,9 +50,9 @@ export const PaymentMethod = () => {
             width={60}
             height={20}
           />
-          <Typography as="body5" className="flex-1">
-            Debit or Credit
-          </Typography>
+          <label htmlFor="mastercard" className="flex-1 cursor-pointer">
+            <Typography as="body5">Debit or Credit</Typography>
+          </label>
 
           <div
             className={`flex h-6 w-6 items-center justify-center rounded-full border p-0.5 ${
@@ -83,9 +83,9 @@ export const PaymentMethod = () => {
             width={60}
             height={20}
           />
-          <Typography as="body5" className="flex-1">
-            PayPal
-          </Typography>
+          <label htmlFor="paypal" className="flex-1 cursor-pointer">
+            <Typography as="body5">PayPal</Typography>
+          </label>
 
           <div
             className={`flex h-6 w-6 items-center justify-center rounded-full border p-0.5 ${

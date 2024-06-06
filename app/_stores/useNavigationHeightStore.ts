@@ -7,7 +7,7 @@ interface NavigationHeightStore {
 
 export const useNavigationHeightStore = create<NavigationHeightStore>(
   (set) => ({
-    navigationBarHeight: 0,
+    navigationBarHeight: 78,
     setNavigationBarHeight: (navigationBarHeight: number) =>
       set({ navigationBarHeight }),
   })
