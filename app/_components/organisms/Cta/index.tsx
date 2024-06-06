@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export const Cta = () => {
   return (
-    <section className="relative max-h-[440px] overflow-hidden">
+    <section className="relative max-h-[440px] overflow-hidden" id="contact-us">
       <div className="absolute bottom-0 -z-10 h-screen w-full">
         <Image
           src="/cta-background.jpg"

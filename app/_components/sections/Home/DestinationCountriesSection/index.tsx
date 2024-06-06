@@ -9,7 +9,7 @@ import Loading from "@/app/_components/sections/Home/DestinationCountriesSection
 
 export const DestinationCountriesSection = async () => {
   return (
-    <section className="full-width bg-black py-24">
+    <section className="full-width bg-black py-24" id="destination">
       <Typography as="body3" className="mb-2">
         Connect Globally and Seamlessly
       </Typography>

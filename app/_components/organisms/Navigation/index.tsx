@@ -26,14 +26,12 @@ export const Navigation = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (typeof window !== "undefined") {
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 2) {
-            setPastYMousePosition(true);
-            return;
-          }
+        if (window.scrollY > 2) {
+          setPastYMousePosition(true);
+          return;
+        }
 
-          setPastYMousePosition(false);
-        });
+        setPastYMousePosition(false);
       }
     };
 
@@ -62,6 +60,8 @@ export const Navigation = () => {
 
   const pathnameToExcludeDivPlaceholder = ["/", "/checkout/esim"];
 
+  console.log({ pastYMousePosition });
+
   return (
     <>
       <nav
@@ -88,13 +88,13 @@ export const Navigation = () => {
             </div>
 
             <div className="hidden space-x-2 lg:block">
-              <Anchor href="#" className="px-3">
+              <Anchor href="/#destination" className="px-3">
                 Destination
               </Anchor>
-              <Anchor href="#" className="px-3">
+              <Anchor href="/#how-it-works" className="px-3">
                 How it Works
               </Anchor>
-              <Anchor href="#" className="px-3">
+              <Anchor href="/#contact-us" className="px-3">
                 Contact Us
               </Anchor>
             </div>
