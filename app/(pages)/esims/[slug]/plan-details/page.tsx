@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { IconArrowLeft } from "@tabler/icons-react";
 
 // atoms
@@ -5,7 +6,23 @@ import { Button, Typography } from "@/app/_components/atoms";
 
 // utils
 import { capitalizeString } from "@/app/_utils";
-import Image from "next/image";
+
+// constants
+import { OPENGRAPH_METADATA } from "@/app/_constants";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  return {
+    title: `1 GB ${capitalizeString(params.slug)} eSIM Plan Details Valid for 7 Days`,
+    openGraph: {
+      ...OPENGRAPH_METADATA,
+      title: `1 GB ${capitalizeString(params.slug)} eSIM Plan Details Valid for 7 Days`,
+    },
+  };
+}
 
 export default function EsimsDetailPlan({
   params,
