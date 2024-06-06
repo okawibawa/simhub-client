@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Metadata } from "next";
 
 // constants
 import { OPENGRAPH_METADATA } from "@/app/_constants";
@@ -13,17 +12,26 @@ import { Guide, Cta } from "@/app/_components/organisms";
 // sections
 import { PlansSection } from "@/app/_components/sections/Esims";
 
-export const metadata: Metadata = {
-  title: "Canada eSIM Plans",
-  openGraph: {
-    ...OPENGRAPH_METADATA,
-    title: "Canada eSIM Plans",
-  },
-};
+// utils
+import { capitalizeString } from "@/app/_utils";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  return {
+    title: `${capitalizeString(params.slug)} eSIM Plans`,
+    openGraph: {
+      ...OPENGRAPH_METADATA,
+      title: `${capitalizeString(params.slug)} eSIM Plans`,
+    },
+  };
+}
 
 export default function Esims() {
   return (
-    <main className="h-full">
+    <main>
       <section className="bg-black">
         <div className="relative bottom-0 mb-6 h-[240px] max-h-[240px] w-full">
           <Image
