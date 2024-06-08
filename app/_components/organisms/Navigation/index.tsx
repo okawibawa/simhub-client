@@ -58,9 +58,12 @@ export const Navigation = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [setNavigationBarHeight]);
 
+  const pathnameToExcludeNavigation = ["/login", "/register"];
   const pathnameToExcludeDivPlaceholder = ["/", "/checkout/esim"];
 
-  console.log({ pastYMousePosition });
+  if (pathnameToExcludeNavigation.includes(pathname)) {
+    return null;
+  }
 
   return (
     <>

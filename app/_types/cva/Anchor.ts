@@ -2,7 +2,7 @@ import { ComponentProps, PropsWithChildren, ReactNode } from "react";
 import { LinkProps } from "next/link";
 import { cva, VariantProps } from "class-variance-authority";
 
-export const anchorVariants = cva(["text-zinc-100"], {
+export const anchorVariants = cva(["text-orange-500"], {
   variants: {
     size: {
       sm: ["text-xs", "leading-[18px]"],
