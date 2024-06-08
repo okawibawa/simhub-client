@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { Typography, Input, Anchor, Button } from "@/app/_components/atoms";
 
-export default function Login() {
+export default function Register() {
   return (
     <main className="relative h-full w-full">
       <section className="full-width flex h-full items-center justify-center">
@@ -27,18 +27,12 @@ export default function Login() {
             />
 
             <Typography as="subheading2" className="mb-7">
-              Login
+              Register
             </Typography>
 
             <form className="mb-8 space-y-5">
               <Input placeholder="email" type="email" />
               <Input placeholder="password" type="password" />
-
-              <div className="flex items-center justify-end">
-                <Anchor href="#" className="text-zinc-400">
-                  Forgot password?
-                </Anchor>
-              </div>
 
               <Button className="w-full" type="submit">
                 Login
@@ -51,9 +45,9 @@ export default function Login() {
               as="body7"
               className="text-center font-normal text-zinc-400"
             >
-              Don&apos;t have an account?{" "}
-              <Anchor href="/register" className="inline-block">
-                Sign up
+              Already have an account?{" "}
+              <Anchor href="/login" className="inline-block">
+                Login
               </Anchor>
             </Typography>
           </div>
