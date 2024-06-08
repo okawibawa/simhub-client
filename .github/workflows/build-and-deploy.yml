@@ -1,0 +1,32 @@
+name: build-and-deploy
+run-name: ${{ github.actor }} is building and deploying ${{ github.event.repository.name }}
+
+env:
+  DOCKER_IMAGE: simhub-client
+  DOCKER_CONTAINER: simhub-client
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    name: build
+    steps:
+      - uses: actions/checkout@v3
+      - run: >
+          docker build -t ${{ env.DOCKER_IMAGE }}:development .
+
+  deploy:
+    runs-on: self-hosted
+    needs: build
+
+    name: deploy
+    steps:
+      - uses: actions/checkout@v3
+      - run: docker container rm -f ${{ env.DOCKER_CONTAINER }} || true
+      - run: >
+          docker run -d -p 3000:3000 --name ${{ env.DOCKER_CONTAINER }} ${{ env.DOCKER_IMAGE }}:development
