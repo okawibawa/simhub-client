@@ -14,12 +14,8 @@ jobs:
   build:
     runs-on: self-hosted
 
+    name: build
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build Docker Image
-        run: docker buildx build --platform linux/amd64,linux/arm64 --push --tag ${{ env.DOCKER_IMAGE }}:latest .
+      -  uses: actions/checkout@v3
+      - run: >
+          docker build -t ${{ env.DOCKER_IMAGE }}:development .
