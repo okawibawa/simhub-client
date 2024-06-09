@@ -49,7 +49,7 @@ export default function Register() {
               className="text-center font-normal text-zinc-400"
             >
               Already have an account?{" "}
-              <Anchor href="/login" className="inline-block">
+              <Anchor href="/login" className="inline-block text-orange-500">
                 Login
               </Anchor>
             </Typography>
