@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Typography, Input, Anchor, Button } from "@/app/_components/atoms";
+import Link from "next/link";
 
 export default function Register() {
   return (
@@ -16,15 +17,17 @@ export default function Register() {
 
         <div className="mx-auto w-full max-w-[580px] rounded-xl bg-white/30 p-2 backdrop-blur-sm">
           <div className="w-full rounded-xl bg-black p-7">
-            <Image
-              src="/simhub-logo-light.svg"
-              width={110}
-              height={32}
-              alt="logo"
-              placeholder="blur"
-              blurDataURL="/simhub-logo-light.svg"
-              className="mb-7"
-            />
+            <Link href="/" className="inline-block">
+              <Image
+                src="/simhub-logo-light.svg"
+                width={110}
+                height={32}
+                alt="logo"
+                placeholder="blur"
+                blurDataURL="/simhub-logo-light.svg"
+                className="mb-7"
+              />
+            </Link>
 
             <Typography as="subheading2" className="mb-7">
               Register

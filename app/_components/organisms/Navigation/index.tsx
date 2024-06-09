@@ -12,6 +12,7 @@ import { useNavigationHeightStore } from "@/app/_stores";
 import { Anchor, Button, Select } from "@/app/_components/atoms";
 
 import { NavigationMobile } from "./NavigationMobile";
+import Link from "next/link";
 
 export const Navigation = () => {
   const { navigationBarHeight, setNavigationBarHeight } =
@@ -112,13 +113,17 @@ export const Navigation = () => {
             </Select>
 
             <div className="flex items-center space-x-4">
-              <Button
-                variant="secondary"
-                className="hidden outline-white hover:bg-zinc-50/10 lg:block"
-              >
-                Login
-              </Button>
-              <Button>Register</Button>
+              <Link href="/login">
+                <Button
+                  variant="secondary"
+                  className="hidden outline-white hover:bg-zinc-50/10 lg:block"
+                >
+                  Login
+                </Button>
+              </Link>
+              <Link href="/register">
+                <Button>Register</Button>
+              </Link>
               <IconMenu2
                 className="block lg:hidden"
                 size={24}
