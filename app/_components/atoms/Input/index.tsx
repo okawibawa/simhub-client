@@ -38,7 +38,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           type={inputType}
           className={cn(
             inputVariants({
-              className: type === "password" ? "pr-12" : className,
+              className: type === "password" ? `${className} pr-12` : className,
               variant,
               isError,
             })
@@ -67,13 +67,13 @@ const TogglePassword = ({
           <IconEyeOff
             size={24}
             color="white"
-            className="absolute right-4 top-1/2 -translate-y-1/2"
+            className="absolute right-4 top-2/3 -translate-y-2/3"
           />
         ) : (
           <IconEye
             size={24}
             color="white"
-            className="absolute right-4 top-1/2 -translate-y-1/2"
+            className="absolute right-4 top-2/3 -translate-y-2/3"
           />
         )}
       </button>

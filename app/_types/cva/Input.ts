@@ -4,8 +4,7 @@ import { cva, VariantProps } from "class-variance-authority";
 export const inputVariants = cva(
   [
     "rounded-lg",
-    "py-2",
-    "px-4",
+    "p-4",
     "bg-zinc-900",
     "text-zinc-50",
     "focus:outline-none",
@@ -16,7 +15,11 @@ export const inputVariants = cva(
   {
     variants: {
       variant: {
-        primary: ["focus:bg-zinc-700", "focus:border", "focus:border-zinc-500"],
+        primary: [
+          "focus:bg-zinc-700",
+          "focus:outline",
+          "focus:outline-zinc-500",
+        ],
       },
       isError: {
         true: ["border", "border-red-500"],
