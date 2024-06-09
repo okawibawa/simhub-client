@@ -15,7 +15,11 @@ export const inputVariants = cva(
   {
     variants: {
       variant: {
-        primary: ["focus:bg-zinc-700", "focus:border", "focus:border-zinc-500"],
+        primary: [
+          "focus:bg-zinc-700",
+          "focus:outline",
+          "focus:outline-zinc-500",
+        ],
       },
       isError: {
         true: ["border", "border-red-500"],
