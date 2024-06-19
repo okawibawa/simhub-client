@@ -10,8 +10,6 @@ import { Typography } from "@/app/_components/atoms";
 import { Guide, Cta } from "@/app/_components/organisms";
 
 // sections
-import { Suspense } from "react";
-
 import { PlansSection } from "@/app/_components/sections/Esims";
 
 // utils
@@ -55,9 +53,7 @@ export default function Esims() {
             </Typography>
           </div>
 
-          <Suspense>
-            <PlansSection />
-          </Suspense>
+          <PlansSection />
         </div>
       </section>
 
