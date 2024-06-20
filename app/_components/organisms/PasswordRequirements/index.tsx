@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { Typography } from "@/app/_components/atoms";
 
 interface PasswordRequirementsProps {

@@ -55,7 +55,7 @@ export default function Login() {
               className="text-center font-normal text-zinc-400"
             >
               Don&apos;t have an account?{" "}
-              <Anchor href="/register" className="inline-block text-zinc-400">
+              <Anchor href="/register" className="inline-block text-orange-500">
                 Sign up
               </Anchor>
             </Typography>

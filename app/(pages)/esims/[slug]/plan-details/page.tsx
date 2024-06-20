@@ -244,7 +244,7 @@ export default function EsimsDetailPlan({
             </div>
           </div>
 
-          <div className="row-start-1 h-fit rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-5  lg:col-start-3 lg:row-start-auto">
+          <div className="row-start-1 h-fit rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-5 lg:col-start-3 lg:row-start-auto">
             <Typography as="body3" className="mb-2">
               {capitalizeString(params.slug)} eSIM Plan
             </Typography>
