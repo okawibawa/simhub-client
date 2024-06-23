@@ -42,7 +42,13 @@ export const login = async (formData: FormData) => {
     const sessionCookie = response.headers.get("Set-Cookie");
 
     if (sessionCookie) {
-      cookies().set(parseSetCookieString(sessionCookie));
+      const parsedCookies = parseSetCookieString(sessionCookie);
+
+      cookies().set({
+        name: parsedCookies.name,
+        value: parsedCookies.value,
+        ...parsedCookies.options,
+      });
     }
 
     redirect("/");
