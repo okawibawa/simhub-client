@@ -3,6 +3,9 @@ import Image from "next/image";
 import { Typography, Input, Anchor, Button } from "@/app/_components/atoms";
 import Link from "next/link";
 
+// server actions
+import { login } from "@/app/_actions";
+
 export default function Login() {
   return (
     <main className="relative h-full w-full">
@@ -33,9 +36,9 @@ export default function Login() {
               Login
             </Typography>
 
-            <form className="mb-8 space-y-5">
-              <Input placeholder="email" type="email" />
-              <Input placeholder="password" type="password" />
+            <form className="mb-8 space-y-5" action={login}>
+              <Input placeholder="email" type="email" name="email" />
+              <Input placeholder="password" type="password" name="password" />
 
               <div className="flex items-center justify-end">
                 <Anchor href="#" className="text-zinc-400">
