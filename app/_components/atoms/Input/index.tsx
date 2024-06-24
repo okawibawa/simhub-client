@@ -67,13 +67,13 @@ const TogglePassword = ({
           <IconEyeOff
             size={24}
             color="white"
-            className="absolute right-4 top-2/3 -translate-y-2/3"
+            className="absolute right-4 top-1/2 -translate-y-1/2"
           />
         ) : (
           <IconEye
             size={24}
             color="white"
-            className="absolute right-4 top-2/3 -translate-y-2/3"
+            className="absolute right-4 top-1/2 -translate-y-1/2"
           />
         )}
       </button>

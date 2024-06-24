@@ -5,3 +5,5 @@ export * from "./Cta";
 export * from "./Guide";
 export * from "./UserSideNavigation";
 export * from "./PasswordRequirements";
+export * from "./LoginForms";
+export * from "./RegisterForms";

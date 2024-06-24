@@ -1,10 +1,10 @@
 import Image from "next/image";
-
-import { Typography, Input, Anchor, Button } from "@/app/_components/atoms";
 import Link from "next/link";
 
-// server actions
-import { login } from "@/app/_actions";
+import { Typography, Anchor } from "@/app/_components/atoms";
+
+// organisms
+import { LoginForms } from "@/app/_components/organisms";
 
 export default function Login() {
   return (
@@ -36,20 +36,7 @@ export default function Login() {
               Login
             </Typography>
 
-            <form className="mb-8 space-y-5" action={login}>
-              <Input placeholder="email" type="email" name="email" />
-              <Input placeholder="password" type="password" name="password" />
-
-              <div className="flex items-center justify-end">
-                <Anchor href="#" className="text-zinc-400">
-                  Forgot password?
-                </Anchor>
-              </div>
-
-              <Button className="w-full" type="submit">
-                Login
-              </Button>
-            </form>
+            <LoginForms />
 
             <div className="mb-8 h-[1px] w-full bg-zinc-600" />
 

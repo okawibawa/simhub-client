@@ -9,14 +9,15 @@ import { cn } from "@/app/_utils";
 import { ButtonProps, buttonVariants } from "@/app/_types/cva";
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant, className, children, ...props }, ref) => {
+  ({ variant, className, isLoading = false, children, ...props }, ref) => {
     return (
       <button
         ref={ref}
-        className={cn(buttonVariants({ className, variant }))}
+        className={cn(buttonVariants({ className, isLoading, variant }))}
+        disabled={isLoading}
         {...props}
       >
-        {children}
+        {isLoading ? "Loading..." : children}
       </button>
     );
   }
