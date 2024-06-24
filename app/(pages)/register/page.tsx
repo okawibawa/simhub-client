@@ -1,7 +1,9 @@
 import Image from "next/image";
-
-import { Typography, Input, Anchor, Button } from "@/app/_components/atoms";
 import Link from "next/link";
+
+import { Typography, Anchor } from "@/app/_components/atoms";
+
+import { RegisterForms } from "@/app/_components/organisms";
 
 export default function Register() {
   return (
@@ -33,14 +35,7 @@ export default function Register() {
               Register
             </Typography>
 
-            <form className="mb-8 space-y-5">
-              <Input placeholder="email" type="email" />
-              <Input placeholder="password" type="password" />
-
-              <Button className="w-full" type="submit">
-                Login
-              </Button>
-            </form>
+            <RegisterForms />
 
             <div className="mb-8 h-[1px] w-full bg-zinc-600" />
 
