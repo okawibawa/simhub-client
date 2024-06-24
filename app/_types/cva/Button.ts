@@ -35,6 +35,15 @@ export const buttonVariants = cva(
           "outline-transparent",
         ],
       },
+      isLoading: {
+        true: [
+          "bg-zinc-800",
+          "outline-transparent",
+          "hover:bg-zinc-900",
+          "hover:outline-transparent",
+          "cursor-not-allowed",
+        ],
+      },
     },
     defaultVariants: {
       variant: "primary",
@@ -45,4 +54,6 @@ export const buttonVariants = cva(
 export interface ButtonProps
   extends PropsWithChildren<
     ComponentProps<"button"> & VariantProps<typeof buttonVariants>
-  > {}
+  > {
+  isLoading?: boolean | undefined;
+}

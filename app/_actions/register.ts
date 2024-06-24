@@ -1,16 +1,17 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { isRedirectError } from "next/dist/client/components/redirect";
 import { redirect } from "next/navigation";
 
-import { signInSchema } from "../_types/entities";
-import { isRedirectError } from "next/dist/client/components/redirect";
+import { signUpSchema } from "../_types/entities";
 
 import { parseSetCookieString } from "../_utils";
 
-export const login = async (formData: FormData) => {
-  const validatedBody = signInSchema.safeParse({
+export const register = async (formData: FormData) => {
+  const validatedBody = signUpSchema.safeParse({
     email: formData.get("email"),
+    username: formData.get("username"),
     password: formData.get("password"),
   });
 
@@ -21,10 +22,11 @@ export const login = async (formData: FormData) => {
   const payload = new FormData();
 
   payload.append("email", validatedBody.data.email);
+  payload.append("username", validatedBody.data.username);
   payload.append("password", validatedBody.data.password);
 
   try {
-    const response = await fetch(`${process.env.HOST_API_URL}/auth/sign-in`, {
+    const response = await fetch(`${process.env.HOST_API_URL}/auth/sign-up`, {
       method: "POST",
       body: payload,
       headers: {
@@ -36,7 +38,7 @@ export const login = async (formData: FormData) => {
     const result = await response.json();
 
     if (!result.ok) {
-      throw new Error("Failed to login.");
+      return result;
     }
 
     const sessionCookie = response.headers.get("Set-Cookie");
@@ -57,6 +59,6 @@ export const login = async (formData: FormData) => {
       throw error;
     }
 
-    throw new Error("Failed to login.");
+    return { ok: false, message: "An unexpected error occurred." };
   }
 };
