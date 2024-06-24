@@ -15,7 +15,6 @@ import { loginAction } from "@/app/_actions";
 export const LoginForms = () => {
   const [isPending, startTransition] = useTransition();
   const [state, formAction] = useFormState(loginAction, {
-    type: "",
     message: "",
   });
 

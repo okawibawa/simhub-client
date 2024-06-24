@@ -8,15 +8,29 @@ import { signUpSchema } from "../_types/entities";
 
 import { parseSetCookieString } from "../_utils";
 
-export const register = async (formData: FormData) => {
-  const validatedBody = signUpSchema.safeParse({
-    email: formData.get("email"),
-    username: formData.get("username"),
-    password: formData.get("password"),
-  });
+interface RegisterState {
+  type?: string;
+  message: string;
+  status?: number;
+  fields?: Record<string, string>;
+}
+
+export const registerAction = async (
+  previousState: RegisterState,
+  data: FormData
+): Promise<RegisterState> => {
+  const formData = Object.fromEntries(data);
+
+  const validatedBody = signUpSchema.safeParse(formData);
 
   if (!validatedBody.success) {
-    return { message: "Failed to login." };
+    const fields: Record<string, string> = {};
+
+    for (const key of Object.keys(formData)) {
+      fields[key] = formData[key].toString();
+    }
+
+    return { type: "ValidationError", message: "Validation error.", fields };
   }
 
   const payload = new FormData();
@@ -38,7 +52,13 @@ export const register = async (formData: FormData) => {
     const result = await response.json();
 
     if (!result.ok) {
-      return result;
+      const errorData = await response.json();
+      return {
+        type: "APIError",
+        status: response.status,
+        message: errorData.message || "Authentication failed",
+        fields: validatedBody.data,
+      };
     }
 
     const sessionCookie = response.headers.get("Set-Cookie");
@@ -59,6 +79,13 @@ export const register = async (formData: FormData) => {
       throw error;
     }
 
-    return { ok: false, message: "An unexpected error occurred." };
+    if (error instanceof Error) {
+      return { message: error.message };
+    } else {
+      return {
+        type: "UnknownError",
+        message: "An unknown error occurred. Please contact admin.",
+      };
+    }
   }
 };

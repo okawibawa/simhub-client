@@ -5,8 +5,6 @@ import { Typography, Anchor } from "@/app/_components/atoms";
 
 import { RegisterForms } from "@/app/_components/organisms";
 
-import { register } from "@/app/_actions";
-
 export default function Register() {
   return (
     <main className="relative h-full w-full">
@@ -37,9 +35,7 @@ export default function Register() {
               Register
             </Typography>
 
-            <form className="mb-8 space-y-5" action={register}>
-              <RegisterForms />
-            </form>
+            <RegisterForms />
 
             <div className="mb-8 h-[1px] w-full bg-zinc-600" />
 

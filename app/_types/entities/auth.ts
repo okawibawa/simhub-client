@@ -21,3 +21,4 @@ export const signUpSchema = baseAuthSchema.extend({
 });
 
 export type signInEntity = z.infer<typeof signInSchema>;
+export type signUpEntity = z.infer<typeof signUpSchema>;
