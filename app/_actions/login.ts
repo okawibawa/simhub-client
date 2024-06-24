@@ -8,19 +8,33 @@ import { signInSchema } from "../_types/entities";
 
 import { parseSetCookieString } from "../_utils";
 
-export const login = async (formData: FormData) => {
-  const validatedBody = signInSchema.safeParse({
-    email: formData.get("email"),
-    password: formData.get("password"),
-  });
+interface LoginState {
+  type?: string;
+  message: string;
+  fields?: Record<string, string>;
+  status?: number;
+}
+
+export const loginAction = async (
+  previousState: LoginState,
+  data: FormData
+): Promise<LoginState> => {
+  const formData = Object.fromEntries(data);
+
+  const validatedBody = signInSchema.safeParse(formData);
 
   if (!validatedBody.success) {
-    throw new Error(
-      JSON.stringify({
-        type: "ValidationError",
-        message: validatedBody.error.flatten(),
-      })
-    );
+    const fields: Record<string, string> = {};
+
+    for (const key of Object.keys(formData)) {
+      fields[key] = formData[key].toString();
+    }
+
+    return {
+      type: "ValidationError",
+      message: "Validation error.",
+      fields,
+    };
   }
 
   const payload = new FormData();
@@ -40,13 +54,12 @@ export const login = async (formData: FormData) => {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(
-        JSON.stringify({
-          type: "APIError",
-          status: response.status,
-          message: errorData.message || "Authentication failed",
-        })
-      );
+      return {
+        type: "APIError",
+        status: response.status,
+        message: errorData.message || "Authentication failed",
+        fields: validatedBody.data,
+      };
     }
 
     const sessionCookie = response.headers.get("Set-Cookie");
@@ -68,14 +81,12 @@ export const login = async (formData: FormData) => {
     }
 
     if (error instanceof Error) {
-      throw new Error(error.message);
+      return { message: error.message };
     } else {
-      throw new Error(
-        JSON.stringify({
-          type: "UnknownError",
-          message: "An unknown error occurred. Please contact admin.",
-        })
-      );
+      return {
+        type: "UnknownError",
+        message: "An unknown error occurred. Please contact admin.",
+      };
     }
   }
 };
