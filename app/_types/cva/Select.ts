@@ -1,4 +1,4 @@
-import { ComponentProps, ReactElement, ReactNode } from "react";
+import { ComponentProps, ReactNode } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 export const selectVariants = cva(
@@ -29,6 +29,6 @@ export interface SelectProps
   extends VariantProps<typeof selectVariants>,
     Omit<ComponentProps<"div">, "onChange"> {
   leftIcon?: ReactNode;
-  onChange?: (value: string) => void;
+  onChange?: (_value: string) => void;
   children?: ReactNode;
 }

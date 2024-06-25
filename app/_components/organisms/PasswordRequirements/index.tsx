@@ -7,6 +7,8 @@ interface PasswordRequirementsProps {
 export const PasswordRequirements = ({
   password,
 }: PasswordRequirementsProps) => {
+  console.log({ password });
+
   return (
     <div className="mb-6 rounded-md bg-zinc-950 px-4 py-3">
       <Typography as="body7" className="mb-2">
