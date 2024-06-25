@@ -9,10 +9,7 @@ import { useCountryGrid } from "@/app/_hooks";
 
 // atoms
 import { Anchor } from "@/app/_components/atoms";
-import {
-  getCountryUrlBasedOnCountryCode,
-  removeSpecialCharsAndReplaceWithHyphens,
-} from "@/app/_utils";
+import { getCountryUrlBasedOnCountryCode } from "@/app/_utils";
 
 interface CountryData {
   name: string;
