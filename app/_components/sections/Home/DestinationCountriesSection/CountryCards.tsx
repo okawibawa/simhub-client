@@ -9,6 +9,10 @@ import { useCountryGrid } from "@/app/_hooks";
 
 // atoms
 import { Anchor } from "@/app/_components/atoms";
+import {
+  getCountryUrlBasedOnCountryCode,
+  removeSpecialCharsAndReplaceWithHyphens,
+} from "@/app/_utils";
 
 interface CountryData {
   name: string;
@@ -44,7 +48,7 @@ export const CountryCard = ({ countries }: CountryGridProps) => {
         <Anchor
           key={index}
           className="flex items-center gap-4 rounded-lg bg-zinc-900 px-5 py-4"
-          href="#"
+          href={`/esims/${getCountryUrlBasedOnCountryCode(country.code)}`}
         >
           <Image
             src={`/flags/${country.code.toLowerCase()}.png`}

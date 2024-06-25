@@ -13,7 +13,10 @@ import { Guide, Cta } from "@/app/_components/organisms";
 import { PlansSection } from "@/app/_components/sections/Esims";
 
 // utils
-import { capitalizeString } from "@/app/_utils";
+import {
+  capitalizeString,
+  getCountryNameBasedOnCountryUrl,
+} from "@/app/_utils";
 
 export async function generateMetadata({
   params,
@@ -29,7 +32,7 @@ export async function generateMetadata({
   };
 }
 
-export default function Esims() {
+export default function Esims({ params }: { params: { slug: string } }) {
   return (
     <main>
       <section className="bg-black">
@@ -44,7 +47,7 @@ export default function Esims() {
 
         <div className="grid-content">
           <Typography as="subheading2" className="mb-16">
-            Canada eSIM Plans
+            {getCountryNameBasedOnCountryUrl(params.slug)} eSIM Plans
           </Typography>
 
           <div className="mb-10">
