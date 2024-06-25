@@ -1,9 +1,9 @@
-// atoms
-import { readFile } from "fs/promises";
 import { CountryCard } from "./CountryCards";
 
-export const CountryGrid = async () => {
-  const countries = await readFile("./countries.json", "utf8");
+import { countriesAction } from "@/app/_actions";
 
-  return <CountryCard countries={JSON.parse(countries)} />;
+export const CountryGrid = async () => {
+  const countries = await countriesAction();
+
+  return <CountryCard countries={countries} />;
 };
