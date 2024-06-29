@@ -5,7 +5,7 @@ import { Anchor, Typography } from "@/app/_components/atoms";
 
 export const Footer = () => {
   return (
-    <footer className="full-width bg-zinc-200 pb-10 pt-20">
+    <footer className="full-width bg-zinc-100 pb-10 pt-20">
       <div className="lg:grid-rows-auto lg:grid lg:grid-flow-row lg:grid-cols-5">
         <div className="mb-20 max-w-[480px] lg:col-span-2">
           <Image

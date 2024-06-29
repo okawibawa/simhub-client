@@ -16,7 +16,7 @@ export const ReviewSection = () => {
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
         {REVIEWS.map((review) => (
           <div key={review.name} className="relative">
-            <div className="relative z-10 flex flex-col rounded-lg border bg-white/20 px-5 py-4 backdrop-blur-sm">
+            <div className="relative z-10 flex h-full flex-col rounded-lg border bg-white/20 px-5 py-4 backdrop-blur-sm">
               <Typography
                 as="body5"
                 className="mb-6 flex-1 text-left text-zinc-50"
