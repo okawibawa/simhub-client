@@ -2,7 +2,7 @@
 import { Typography } from "@/app/_components/atoms";
 
 import { CountryGrid } from "./CountryGrid";
-import { CountryTabs } from "./CountryTabs";
+// import { CountryTabs } from "./CountryTabs";
 import { Suspense } from "react";
 
 import Loading from "@/app/_components/sections/Home/DestinationCountriesSection/loading";
@@ -18,7 +18,7 @@ export const DestinationCountriesSection = async () => {
           Explore the Most Exciting Destinations
         </Typography>
 
-        <CountryTabs />
+        {/* <CountryTabs /> */}
       </div>
 
       <Suspense fallback={<Loading />}>
