@@ -72,7 +72,7 @@ export const Navigation = () => {
         ref={navRef}
         className={`fixed left-0 top-0 z-50 w-full py-[18px] transition-all duration-200 ${
           pathname !== "/" || pastYMousePosition
-            ? "bg-zinc-100 shadow-lg shadow-zinc-600/10"
+            ? "bg-zinc-100/30 shadow-lg shadow-zinc-600/10 backdrop-blur-sm"
             : "bg-transparent"
         }`}
       >
@@ -81,11 +81,7 @@ export const Navigation = () => {
             <div className="flex-1">
               <Anchor href="/" className="inline-block w-fit">
                 <Image
-                  src={
-                    pathname !== "/" || pastYMousePosition
-                      ? "/simhub-logo-dark.svg"
-                      : "/simhub-logo-light.svg"
-                  }
+                  src="/simhub-logo-dark.svg"
                   width={110}
                   height={32}
                   alt="logo"
@@ -96,22 +92,13 @@ export const Navigation = () => {
             </div>
 
             <div className="hidden space-x-2 lg:block">
-              <Anchor
-                href="/#destination"
-                className={`${pathname !== "/" || pastYMousePosition ? "text-zinc-800" : "text-zinc-50"} px-3`}
-              >
+              <Anchor href="/#destination" className="px-3 text-zinc-800">
                 Destination
               </Anchor>
-              <Anchor
-                href="/#how-it-works"
-                className={`${pathname !== "/" || pastYMousePosition ? "text-zinc-800" : "text-zinc-50"} px-3`}
-              >
+              <Anchor href="/#how-it-works" className="px-3 text-zinc-800">
                 How it Works
               </Anchor>
-              <Anchor
-                href="/#contact-us"
-                className={`${pathname !== "/" || pastYMousePosition ? "text-zinc-800" : "text-zinc-50"} px-3`}
-              >
+              <Anchor href="/#contact-us" className="px-3 text-zinc-800">
                 Contact Us
               </Anchor>
             </div>
@@ -119,7 +106,7 @@ export const Navigation = () => {
             <Select
               leftIcon={<IconLanguage />}
               onChange={(e) => console.log(e)}
-              className={`${pathname !== "/" || pastYMousePosition ? "text-zinc-800" : "text-zinc-50"} hidden lg:flex`}
+              className="hidden text-zinc-800 lg:flex"
             >
               <option value="en">English</option>
               <option value="es">Spanish</option>
@@ -129,7 +116,7 @@ export const Navigation = () => {
               <Link href="/login">
                 <Button
                   variant="secondary"
-                  className={`${pathname !== "/" || pastYMousePosition ? "text-zinc-800" : "text-zinc-50 outline-white"} hidden hover:bg-zinc-50/10 lg:block`}
+                  className="hidden text-zinc-800 hover:bg-zinc-50/10 lg:block"
                 >
                   Login
                 </Button>
