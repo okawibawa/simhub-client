@@ -47,7 +47,7 @@ export default async function EsimsDetailPlan({
     esimPlanDetails.ok && esimPlanDetails.data.length > 0;
 
   return (
-    <main className="full-width bg-black py-5">
+    <main className="full-width bg-zinc-100 py-5">
       <section>
         <Typography as="body4" className="mb-6 flex items-center gap-2">
           <IconArrowLeft />
@@ -64,7 +64,7 @@ export default async function EsimsDetailPlan({
         )}
 
         <div className="grid grid-cols-1 gap-2 lg:grid-cols-3">
-          <div className="space-y-4 rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-5 lg:col-span-2">
+          <div className="space-y-4 rounded-xl border border-zinc-600 bg-white px-4 py-5 lg:col-span-2">
             <div>
               <Typography as="body3" className="mb-4">
                 Product Information

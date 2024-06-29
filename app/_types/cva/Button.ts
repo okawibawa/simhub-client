@@ -17,16 +17,16 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         primary: [
-          "bg-primary-500",
-          "hover:bg-primary-600",
+          "bg-blue-500",
+          "hover:bg-blue-600",
           "outline-1",
-          "outline-primary-500",
-          "hover:outline-primary-600",
+          "outline-blue-500",
+          "hover:outline-blue-600",
         ],
         secondary: [
           "bg-transparent",
           "outline-1",
-          "outline-primary-500",
+          "outline-blue-500",
           "hover:bg-zinc-800",
         ],
         tertiary: [

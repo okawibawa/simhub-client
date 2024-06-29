@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 import { ComponentProps, PropsWithChildren } from "react";
 
-export const typographyVariants = cva("text-zinc-50", {
+export const typographyVariants = cva("text-zinc-800", {
   variants: {
     as: {
       headline: [

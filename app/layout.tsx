@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-black`}>
+      <body className={`${inter.className} bg-zinc-100`}>
         <Navigation />
         {children}
         <Toaster position="bottom-right" toastOptions={{ duration: 3000 }} />

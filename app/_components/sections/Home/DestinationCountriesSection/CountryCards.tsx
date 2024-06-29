@@ -22,7 +22,7 @@ export const CountryCards = ({ countries }: { countries: CountryData[] }) => {
       {countries?.map((country: CountryData) => (
         <Anchor
           key={country.code}
-          className="flex items-center gap-4 rounded-lg bg-zinc-900 px-5 py-4"
+          className="flex items-center gap-4 rounded-lg bg-blue-500 px-5 py-4 shadow-lg shadow-blue-400/50 transition-all duration-300 hover:scale-105 hover:shadow-blue-400/100"
           href={`/esims/${getCountryUrlBasedOnCountryCode(country.code)}`}
         >
           <Image

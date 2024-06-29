@@ -19,10 +19,13 @@ export const Cta = () => {
       </div>
 
       <div className="full-width pb-[168px] pt-10 text-center">
-        <Typography as="subheading1" className="mx-auto mb-8 max-w-[780px]">
+        <Typography
+          as="subheading1"
+          className="mx-auto mb-8 max-w-[780px] text-zinc-50"
+        >
           We are always ready to support you whenever and wherever you are
         </Typography>
-        <Button className="mx-auto flex items-center gap-2">
+        <Button className="mx-auto flex items-center gap-2 text-zinc-50">
           <IconMessageChatbot size={24} color="white" /> Customer Support
         </Button>
       </div>

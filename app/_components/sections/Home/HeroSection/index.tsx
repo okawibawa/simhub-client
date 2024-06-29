@@ -22,13 +22,16 @@ export const HeroSection = () => {
       />
 
       <div className="grid-content text-center">
-        <Typography as="headline" className="mx-auto mb-8 max-w-[580px]">
+        <Typography
+          as="headline"
+          className="mx-auto mb-8 max-w-[580px] text-zinc-50"
+        >
           Your Digital Gateway to Seamless Connectivity
         </Typography>
 
         <CountrySearch />
 
-        <Typography as="body4" className="font-medium text-zinc-300">
+        <Typography as="body4" className="font-medium text-zinc-200">
           Cover your trip over 150+ countries with our global eSIM
         </Typography>
       </div>

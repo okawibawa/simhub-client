@@ -8,7 +8,7 @@ import { REVIEWS } from "@/app/_constants";
 
 export const ReviewSection = () => {
   return (
-    <section className="full-width bg-black py-24 text-center">
+    <section className="full-width bg-zinc-100 py-24 text-center">
       <Typography as="subheading2" className="mb-14">
         Story from our beloved customers
       </Typography>
@@ -17,11 +17,11 @@ export const ReviewSection = () => {
         {REVIEWS.map((review) => (
           <div
             key={review.name}
-            className="flex flex-col rounded-lg bg-neutral-900 px-5 py-4"
+            className="flex flex-col rounded-lg border border-blue-600 bg-blue-500 px-5 py-4"
           >
             <Typography
               as="body5"
-              className="mb-6 flex-1 text-left text-zinc-500"
+              className="mb-6 flex-1 text-left text-zinc-50"
             >
               {review.review}
             </Typography>
@@ -34,7 +34,7 @@ export const ReviewSection = () => {
                 width={24}
                 height={24}
               />
-              <Typography as="body5" className="text-zinc-400">
+              <Typography as="body5" className="text-zinc-100">
                 {review.name}
               </Typography>
             </div>
