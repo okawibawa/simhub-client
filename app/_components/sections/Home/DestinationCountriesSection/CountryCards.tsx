@@ -20,20 +20,25 @@ export const CountryCards = ({ countries }: { countries: CountryData[] }) => {
   return (
     <>
       {countries?.map((country: CountryData) => (
-        <Anchor
-          key={country.code}
-          className="flex items-center gap-4 rounded-lg bg-blue-500 px-5 py-4 shadow-lg shadow-blue-400/50 transition-all duration-300 hover:scale-105 hover:shadow-blue-400/100"
-          href={`/esims/${getCountryUrlBasedOnCountryCode(country.code)}`}
-        >
-          <Image
-            src={`/flags/${GLOBAL_COUNTRIES_CODES.includes(country.code) ? "global" : country.code.toLowerCase()}.png`}
-            width={26}
-            height={26}
-            alt={country.name}
-          />
-          <span className="flex-1">{country.name}</span>
-          <IconArrowRight size={24} color="white" />
-        </Anchor>
+        <div className="relative" key={country.code}>
+          <Anchor
+            className="relative z-10 flex h-full items-center gap-4 rounded-lg bg-white/20 px-5 py-4 backdrop-blur-sm"
+            href={`/esims/${getCountryUrlBasedOnCountryCode(country.code)}`}
+          >
+            <Image
+              src={`/flags/${GLOBAL_COUNTRIES_CODES.includes(country.code) ? "global" : country.code.toLowerCase()}.png`}
+              width={26}
+              height={26}
+              alt={country.name}
+            />
+            <span className="flex-1 font-semibold text-white">
+              {country.name}
+            </span>
+            <IconArrowRight size={24} color="white" />
+          </Anchor>
+
+          <div className="absolute inset-0 h-full w-full rounded-lg bg-gradient-to-r from-blue-500 to-blue-800/60" />
+        </div>
       ))}
     </>
   );
