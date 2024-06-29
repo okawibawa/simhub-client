@@ -9,20 +9,9 @@ import { CountrySearch } from "@/app/_components/organisms";
 
 export const HeroSection = () => {
   return (
-    <section className="grid-content h-screen max-h-[420px] w-full place-items-center md:max-h-[520px]">
-      {/* <Image
-        src="/home-page-hero.jpg"
-        fill
-        className="absolute -z-10"
-        alt="simhub hero image"
-        priority={true}
-        style={{
-          objectFit: "cover",
-        }}
-      /> */}
-
-      <div className="flex h-full w-full items-center justify-between">
-        <div>
+    <section className="grid-content h-screen max-h-[720px] w-full place-items-center md:max-h-[520px]">
+      <div className="flex h-full w-full flex-col-reverse items-center md:flex-row md:justify-between">
+        <div className="w-full text-center md:w-1/2 md:text-left">
           <Typography as="headline" className="mb-8 max-w-[580px]">
             Your Digital Gateway to Seamless Connectivity
           </Typography>
@@ -34,14 +23,30 @@ export const HeroSection = () => {
           </Typography>
         </div>
 
-        <div className="absolute right-0 h-screen w-full">
+        <div className="relative h-full w-full md:w-1/2">
+          <Image
+            src="/hero-dest-1.png"
+            alt="hero-dest-1"
+            width={212}
+            height={212}
+            className="absolute left-1/2 top-2/3 -translate-x-1/2 -translate-y-1/2 -skew-x-1 shadow-2xl"
+          />
+          <Image
+            src="/hero-dest-2.png"
+            alt="hero-dest-2"
+            width={200}
+            height={200}
+            className="absolute left-1/2 top-2/4 -z-[2] -translate-x-1/3 -translate-y-1/2 -skew-x-1 shadow-2xl md:left-2/3"
+          />
+        </div>
+
+        <div className="absolute left-0 right-0 -z-10 h-screen w-full">
           <Image
             src="/hero-blob.png"
             alt="hero-blob"
             // width={512}
             // height={512}
             fill
-            className="top-0 -z-10"
           />
         </div>
       </div>

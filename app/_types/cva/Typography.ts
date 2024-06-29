@@ -7,8 +7,10 @@ export const typographyVariants = cva("text-zinc-800", {
       headline: [
         "text-[32px]", // uses value from subheading2
         "leading-[42px]", // uses value from subheading2
-        "md:text-[44px]",
-        "md:leading-[56px]",
+        "md:text-[34px]",
+        "md:leading-[46px]",
+        "lg:text-[44px]",
+        "lg:leading-[56px]",
         "font-semibold",
       ],
       subheading1: [

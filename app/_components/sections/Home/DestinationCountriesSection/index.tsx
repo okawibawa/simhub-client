@@ -9,12 +9,15 @@ import Loading from "@/app/_components/sections/Home/DestinationCountriesSection
 
 export const DestinationCountriesSection = async () => {
   return (
-    <section className="full-width bg-zinc-100 py-24" id="destination">
+    <section
+      className="full-width md:24 bg-zinc-100 py-16 lg:py-24"
+      id="destination"
+    >
       <Typography as="body3" className="mb-2">
         Connect Globally and Seamlessly
       </Typography>
       <div className="mb-8 flex flex-col lg:flex-row lg:items-center lg:justify-between">
-        <Typography as="subheading2" className="mb-10 font-bold lg:mb-0">
+        <Typography as="subheading2" className="font-bold lg:mb-0">
           Explore the Most Exciting Destinations
         </Typography>
 

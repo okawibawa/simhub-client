@@ -9,7 +9,7 @@ export const CountrySearch = () => {
   const { randomCountry } = useCountrySearchHook();
 
   return (
-    <div className="relative mb-4 w-1/2 max-w-[580px]">
+    <div className="relative mx-auto mb-4 w-full max-w-[580px] lg:mx-0 lg:w-1/2">
       <input
         type="text"
         placeholder={randomCountry}
