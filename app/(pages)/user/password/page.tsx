@@ -10,7 +10,7 @@ import { PasswordRequirements } from "@/app/_components/organisms";
 
 export default function UserPassword() {
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [_confirmPassword, setConfirmPassword] = useState("");
 
   return (
     <main className="mt-[82px]">

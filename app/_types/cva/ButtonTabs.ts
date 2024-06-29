@@ -13,6 +13,9 @@ export const buttonTabsVariants = cva(
           "hover:bg-zinc-800",
         ],
       },
+      isDisabled: {
+        true: ["cursor-not-allowed", "opacity-75"],
+      },
       isActive: {
         true: ["border-0", "bg-zinc-50", "text-zinc-950", "hover:bg-zinc-100"],
       },
@@ -20,6 +23,7 @@ export const buttonTabsVariants = cva(
     defaultVariants: {
       variant: "primary",
       isActive: false,
+      isDisabled: false,
     },
   }
 );
