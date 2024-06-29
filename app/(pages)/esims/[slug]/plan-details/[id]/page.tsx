@@ -64,7 +64,7 @@ export default async function EsimsDetailPlan({
         )}
 
         <div className="grid grid-cols-1 gap-2 lg:grid-cols-3">
-          <div className="space-y-4 rounded-xl border border-zinc-600 bg-white px-4 py-5 lg:col-span-2">
+          <div className="space-y-4 rounded-xl border border-zinc-600 bg-zinc-100 px-4 py-5 lg:col-span-2">
             <div>
               <Typography as="body3" className="mb-4">
                 Product Information
@@ -105,11 +105,9 @@ export default async function EsimsDetailPlan({
                   </div>
 
                   <div>
-                    <Typography as="body5" className="text-zinc-50">
-                      Provider
-                    </Typography>
+                    <Typography as="body5">Provider</Typography>
 
-                    <Typography as="body5" className="text-zinc-400">
+                    <Typography as="body5" className="text-zinc-800">
                       Claro/Telefonica
                     </Typography>
                   </div>
@@ -133,11 +131,9 @@ export default async function EsimsDetailPlan({
                   </div>
 
                   <div>
-                    <Typography as="body5" className="text-zinc-50">
-                      Network
-                    </Typography>
+                    <Typography as="body5">Network</Typography>
 
-                    <Typography as="body5" className="text-zinc-400">
+                    <Typography as="body5" className="text-zinc-800">
                       3G/LTE
                     </Typography>
                   </div>
@@ -159,11 +155,9 @@ export default async function EsimsDetailPlan({
                   </div>
 
                   <div>
-                    <Typography as="body5" className="text-zinc-50">
-                      Supported
-                    </Typography>
+                    <Typography as="body5">Supported</Typography>
 
-                    <Typography as="body5" className="text-zinc-400">
+                    <Typography as="body5" className="text-zinc-800">
                       Data only (no calls)
                     </Typography>
                   </div>
@@ -185,11 +179,9 @@ export default async function EsimsDetailPlan({
                   </div>
 
                   <div>
-                    <Typography as="body5" className="text-zinc-50">
-                      eKYC
-                    </Typography>
+                    <Typography as="body5">eKYC</Typography>
 
-                    <Typography as="body5" className="text-zinc-400">
+                    <Typography as="body5" className="text-zinc-800">
                       Domestic/Local registration (available)
                     </Typography>
                   </div>
@@ -197,18 +189,18 @@ export default async function EsimsDetailPlan({
               </div>
 
               <div>
-                <Typography as="body5" className="text-zinc-50">
+                <Typography as="body5">
                   - Enjoy your trip with Unlimited data
                 </Typography>
-                <Typography as="body5" className="text-zinc-50">
+                <Typography as="body5">
                   - You can use all social media without VPN
                 </Typography>
-                <Typography as="body5" className="mb-4 text-zinc-50">
+                <Typography as="body5" className="mb-4">
                   - Eligibility period and data begin in 24 hours from the time
                   you activate your eSIM following registration
                 </Typography>
 
-                <Typography as="body5" className="text-zinc-400">
+                <Typography as="body5" className="text-zinc-800">
                   *You will receive a QR code immediately after you make a
                   purchase using your registered email address. To activate it,
                   you can scan the QR code with your smartphone and it will be
@@ -222,27 +214,27 @@ export default async function EsimsDetailPlan({
                 Instructions
               </Typography>
 
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - Before making a purchase, make sure your device supports eSIM
                 services and has 5G capability.
               </Typography>
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - Ensure you have an available internet connection, either
                 through Wi-Fi or your physical SIM card.
               </Typography>
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - For iPhone users: Open Settings - Cellular - Add eSIM.
               </Typography>
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - For Android users: Open Settings - Connections - SIM Manager -
                 Add eSIM.
               </Typography>
-              <Typography as="body5" className="mb-4 text-zinc-50">
+              <Typography as="body5" className="mb-4">
                 - Wait for the installation process to complete and the
                 notification to be received.
               </Typography>
 
-              <Typography as="body5" className="text-zinc-400">
+              <Typography as="body5" className="text-zinc-800">
                 Experience better and faster internet speeds with 5G e-SIM!
                 Activate it now and enjoy the convenience.
               </Typography>
@@ -253,24 +245,24 @@ export default async function EsimsDetailPlan({
                 Policy
               </Typography>
 
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - The eSIM includes unlimited data for the contracted time.
                 However, please note that the carrier may reserve the right to
                 apply a Fair Usage Policy.
               </Typography>
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - The check-in (purchase confirmation) period is 180 days from
                 the date of product purchase, and you can apply for a refund
                 during this period.
               </Typography>
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - Exchanges/refunds are not possible after check-in (purchase
                 confirmation).
               </Typography>
             </div>
           </div>
 
-          <div className="row-start-1 h-fit rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-5 lg:col-start-3 lg:row-start-auto">
+          <div className="row-start-1 h-fit rounded-xl border border-zinc-600 bg-zinc-100 px-4 py-5 lg:col-start-3 lg:row-start-auto">
             <Typography as="body3" className="mb-2">
               {isFetchSuccessAndEsimPlanExists
                 ? capitalizeString(esimPlanDetails.data[0].plan)

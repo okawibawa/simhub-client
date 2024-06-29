@@ -123,15 +123,15 @@ export const Select = ({
       >
         {leftIcon && leftIcon}
         <p>{selectedOption.toUpperCase()}</p>
-        <IconChevronDown color="#F4F4F5" size={20} />
+        <IconChevronDown color="#27272a" size={20} />
       </div>
 
       {isOpen && (
-        <div className="absolute top-full mt-1 bg-white rounded-md overflow-hidden">
+        <div className="absolute top-full mt-1 overflow-hidden rounded-md bg-white">
           {validChildren.map((child, index) => (
             <p
               key={child.props.value}
-              className={`py-3 px-4 hover:bg-[#f3f4f6] cursor-pointer ${
+              className={`cursor-pointer px-4 py-3 hover:bg-[#f3f4f6] ${
                 focusedOptionIndex === index ? "bg-[#f3f4f6]" : ""
               }`}
               onClick={() => handleSelectOptions(child.props.value)}

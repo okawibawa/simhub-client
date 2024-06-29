@@ -41,7 +41,7 @@ export const HeroSection = () => {
             width={256}
             height={256}
             placeholder="blur"
-            className="absolute left-1/2 top-2/4 -z-[2] -translate-x-1/3 -translate-y-1/2 -skew-x-1 shadow-2xl md:left-2/3"
+            className="absolute left-1/2 top-2/4 -z-[2] -translate-x-1/2 -translate-y-1/2 -skew-x-1 shadow-2xl md:left-2/3"
           />
         </div>
 
