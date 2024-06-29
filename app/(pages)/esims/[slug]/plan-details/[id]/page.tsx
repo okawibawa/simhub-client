@@ -5,10 +5,13 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import { Button, Typography } from "@/app/_components/atoms";
 
 // utils
-import { capitalizeString } from "@/app/_utils";
+import { capitalizeString, formatNumberToCurrency } from "@/app/_utils";
 
 // constants
 import { OPENGRAPH_METADATA } from "@/app/_constants";
+
+import { fetchEsimPlanById } from "@/app/_actions/esimActions";
+import { format } from "path";
 
 export async function generateMetadata({
   params,
@@ -24,11 +27,16 @@ export async function generateMetadata({
   };
 }
 
-export default function EsimsDetailPlan({
+export default async function EsimsDetailPlan({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; id: string };
 }) {
+  const esimPlanDetails = await fetchEsimPlanById({ id: parseInt(params.id) });
+
+  const isFetchSuccessAndEsimPlanExists =
+    esimPlanDetails.ok && esimPlanDetails.data.length > 0;
+
   return (
     <main className="full-width bg-black py-5">
       <section>
@@ -36,6 +44,15 @@ export default function EsimsDetailPlan({
           <IconArrowLeft />
           eSIM Plans
         </Typography>
+
+        {isFetchSuccessAndEsimPlanExists ? null : (
+          <div className="mb-4 rounded-xl border border-red-700 bg-red-500 p-4">
+            <Typography as="body5" className="text-sm">
+              Sorry, we are having some issues while fetching eSIM plans. Please
+              try again later or contact support.
+            </Typography>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 gap-2 lg:grid-cols-3">
           <div className="space-y-4 rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-5 lg:col-span-2">
@@ -246,9 +263,18 @@ export default function EsimsDetailPlan({
 
           <div className="row-start-1 h-fit rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-5 lg:col-start-3 lg:row-start-auto">
             <Typography as="body3" className="mb-2">
+              {isFetchSuccessAndEsimPlanExists
+                ? capitalizeString(esimPlanDetails.data[0].plan)
+                : ""}{" "}
               {capitalizeString(params.slug)} eSIM Plan
             </Typography>
-            <Typography as="body1">$22</Typography>
+            <Typography as="body1">
+              {formatNumberToCurrency(
+                isFetchSuccessAndEsimPlanExists
+                  ? esimPlanDetails.data[0].price_in_usd
+                  : 0
+              )}
+            </Typography>
 
             <div className="my-4 h-[1px] w-full bg-zinc-700" />
 
@@ -257,21 +283,31 @@ export default function EsimsDetailPlan({
                 <Typography as="body5" className="mb-1 text-zinc-500">
                   Coverage
                 </Typography>
-                <Typography as="body4">13 Countries</Typography>
+                <Typography as="body4">
+                  {esimPlanDetails.ok ? esimPlanDetails.data[0].name : "-"}
+                </Typography>
               </div>
 
               <div>
                 <Typography as="body5" className="mb-1 text-zinc-500">
                   Validity
                 </Typography>
-                <Typography as="body4">7 days</Typography>
+                <Typography as="body4">
+                  {esimPlanDetails.ok
+                    ? `${esimPlanDetails.data[0].duration_in_days} days`
+                    : "-"}{" "}
+                </Typography>
               </div>
 
               <div>
                 <Typography as="body5" className="mb-1 text-zinc-500">
                   Data
                 </Typography>
-                <Typography as="body4">Unlimited</Typography>
+                <Typography as="body4">
+                  {esimPlanDetails.ok
+                    ? `${esimPlanDetails.data[0].data_amount}${esimPlanDetails.data[0].data_unit.toUpperCase()}`
+                    : "-"}
+                </Typography>
               </div>
             </div>
 

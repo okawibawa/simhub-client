@@ -1,13 +1,15 @@
-import { fetchEsimPlans } from "../_libs/api";
-import { isApiError } from "../_utils";
+"use server";
 
-export const esimPlansAction = async ({
+import { fetchEsimPlans as fetchEsimPlansApi } from "../../_libs/api";
+import { isApiError } from "../../_utils";
+
+export const fetchEsimPlans = async ({
   countryCode,
 }: {
   countryCode: string;
 }) => {
   try {
-    return await fetchEsimPlans(countryCode);
+    return await fetchEsimPlansApi(countryCode);
   } catch (error) {
     if (isApiError(error)) {
       return { ok: error.ok, code: error.code, error: error.message };

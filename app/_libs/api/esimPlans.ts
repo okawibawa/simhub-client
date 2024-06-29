@@ -19,3 +19,23 @@ export const fetchEsimPlans = async (countryCode: string) => {
     throw InternalServerError;
   }
 };
+
+export const fetchEsimPlanById = async (id: number) => {
+  try {
+    const response = await fetch(
+      `${process.env.HOST_API_URL}/esims/plan-details/${id}`
+    );
+
+    if (!response.ok) {
+      throw ApiError(response.status, "Error fetching eSIM plan details");
+    }
+
+    return await response.json();
+  } catch (error) {
+    if (isApiError(error)) {
+      throw error;
+    }
+
+    throw InternalServerError;
+  }
+};

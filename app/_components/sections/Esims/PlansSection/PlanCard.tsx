@@ -1,15 +1,30 @@
 "use client";
 
+import Link from "next/link";
+
 // atoms
 import { Button, Typography } from "@/app/_components/atoms";
+
+import { buttonVariants } from "@/app/_types/cva";
 
 import { useEsimPlansFilterHook } from "@/app/_hooks";
 
 import { esimPlansEntity } from "@/app/_types/entities/esimPlans";
 
-import { capitalizeString, formatNumberToCurrency } from "@/app/_utils";
+import {
+  capitalizeString,
+  cn,
+  formatNumberToCurrency,
+  getCountryUrlBasedOnCountryCode,
+} from "@/app/_utils";
 
-export const PlanCard = ({ esimPlans }: { esimPlans: esimPlansEntity[] }) => {
+export const PlanCard = ({
+  esimPlans,
+  slug,
+}: {
+  esimPlans: esimPlansEntity[];
+  slug: string;
+}) => {
   const { planType } = useEsimPlansFilterHook();
 
   return (
@@ -118,9 +133,15 @@ export const PlanCard = ({ esimPlans }: { esimPlans: esimPlansEntity[] }) => {
               </div>
             </div>
 
-            <Button variant="secondary" className="w-full">
+            <Link
+              className={cn(
+                buttonVariants({ variant: "secondary" }),
+                "w-full text-center"
+              )}
+              href={`/esims/${getCountryUrlBasedOnCountryCode(slug)}/plan-details/${esimPlan.id}`}
+            >
               Purchase
-            </Button>
+            </Link>
           </div>
         ))}{" "}
     </>

@@ -1,4 +1,4 @@
-import { esimPlansAction } from "@/app/_actions/esimPlans";
+import { fetchEsimPlans } from "@/app/_actions/esimActions";
 
 import { PlanCard } from "./PlanCard";
 
@@ -6,7 +6,7 @@ import { PlanFilter } from "./PlanFilter";
 import { esimPlansEntity } from "@/app/_types/entities/esimPlans";
 
 export const PlanGrid = async ({ slug }: { slug: string }) => {
-  const esimPlans = await esimPlansAction({ countryCode: slug });
+  const esimPlans = await fetchEsimPlans({ countryCode: slug });
 
   if (!esimPlans.ok && esimPlans.code > 300) {
     return (
@@ -36,7 +36,7 @@ export const PlanGrid = async ({ slug }: { slug: string }) => {
       <PlanFilter planTypes={planTypes} />
 
       <div className="my-6 grid grid-cols-1 gap-x-5 gap-y-6 md:grid-cols-2 lg:grid-cols-4">
-        <PlanCard esimPlans={esimPlans.data} />
+        <PlanCard esimPlans={esimPlans.data} slug={slug} />
       </div>
     </div>
   );
