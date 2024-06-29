@@ -3,16 +3,16 @@ import { esimPlansAction } from "@/app/_actions/esimPlans";
 import { PlanCard } from "./PlanCard";
 
 import { PlanFilter } from "./PlanFilter";
+import { esimPlansEntity } from "@/app/_types/entities/esimPlans";
 
-export const PlanGrid = async () => {
-  const esimPlans = await esimPlansAction();
-
-  console.log(esimPlans);
+export const PlanGrid = async ({ slug }: { slug: string }) => {
+  const esimPlans = await esimPlansAction({ countryCode: slug });
 
   if (!esimPlans.ok && esimPlans.code > 300) {
     return (
       <div className="my-6 w-full rounded-lg bg-zinc-900 px-5 py-10 text-center text-white">
-        Error fetching eSIM plans. Please contact support.
+        We are having some issues fetching eSIM plans. Please try again later or
+        contact support.
       </div>
     );
   }
@@ -25,9 +25,15 @@ export const PlanGrid = async () => {
     );
   }
 
+  const planTypes = [
+    ...new Set(
+      esimPlans.data.map((esimPlan: esimPlansEntity) => esimPlan.type)
+    ),
+  ] as ["roaming", "local"];
+
   return (
     <div>
-      <PlanFilter />
+      <PlanFilter planTypes={planTypes} />
 
       <div className="my-6 grid grid-cols-1 gap-x-5 gap-y-6 md:grid-cols-2 lg:grid-cols-4">
         <PlanCard esimPlans={esimPlans.data} />

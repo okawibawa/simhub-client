@@ -7,7 +7,8 @@ export const CountryGrid = async () => {
   if (!countries.ok && countries.code > 300) {
     return (
       <div className="w-full rounded-lg bg-zinc-900 px-5 py-10 text-center text-white">
-        Error fetching countries. Please contact support.
+        We are having some issues fetching eSIM plans. Please try again later or
+        contact support.
       </div>
     );
   }

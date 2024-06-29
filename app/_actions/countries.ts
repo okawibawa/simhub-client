@@ -11,6 +11,6 @@ export const countriesAction = async () => {
       return { ok: error.ok, code: error.code, error: error.message };
     }
 
-    return { error: "Something went wrong" };
+    return { ok: false, code: 500, error: "Something went wrong" };
   }
 };

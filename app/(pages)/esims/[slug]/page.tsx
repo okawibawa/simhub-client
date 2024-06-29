@@ -15,8 +15,10 @@ import { PlansSection } from "@/app/_components/sections/Esims";
 // utils
 import {
   capitalizeString,
+  getCountryCodeBasedOnCountryUrl,
   getCountryNameBasedOnCountryUrl,
 } from "@/app/_utils";
+import { get } from "http";
 
 export async function generateMetadata({
   params,
@@ -56,7 +58,7 @@ export default function Esims({ params }: { params: { slug: string } }) {
             </Typography>
           </div>
 
-          <PlansSection />
+          <PlansSection slug={getCountryCodeBasedOnCountryUrl(params.slug)!} />
         </div>
       </section>
 

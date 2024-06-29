@@ -4,26 +4,28 @@
 import { ButtonTabs } from "@/app/_components/atoms";
 
 import { useEsimPlansStore } from "@/app/_stores";
+import { capitalizeString } from "@/app/_utils";
 
-export const PlanFilter = () => {
+export const PlanFilter = ({
+  planTypes,
+}: {
+  planTypes: ["roaming", "local"];
+}) => {
   const { planType, setPlanType } = useEsimPlansStore();
 
   return (
     <>
       <div className="flex items-center space-x-5 overflow-scroll md:overflow-hidden">
         <div className="flex items-center gap-x-2">
-          <ButtonTabs
-            onClick={() => setPlanType("roaming")}
-            isActive={planType === "roaming"}
-          >
-            Roaming
-          </ButtonTabs>
-          <ButtonTabs
-            onClick={() => setPlanType("local")}
-            isActive={planType === "local"}
-          >
-            Local
-          </ButtonTabs>
+          {planTypes.map((type) => (
+            <ButtonTabs
+              key={type}
+              onClick={() => setPlanType(type)}
+              isActive={type === planType}
+            >
+              {capitalizeString(type)}
+            </ButtonTabs>
+          ))}
         </div>
 
         <div className="h-8 w-[1px] bg-zinc-500" />
@@ -41,7 +43,7 @@ export const PlanFilter = () => {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#96e3a6"
+                stroke="#57a8e5"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -66,7 +68,7 @@ export const PlanFilter = () => {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#96e3a6"
+                stroke="#57a8e5"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
