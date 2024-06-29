@@ -8,6 +8,7 @@ import { Anchor } from "@/app/_components/atoms";
 import { getCountryUrlBasedOnCountryCode } from "@/app/_utils";
 
 import { useCountryTabsHook } from "@/app/_hooks";
+import { GLOBAL_COUNTRIES_CODES } from "@/app/_constants";
 
 interface CountryData {
   name: string;
@@ -19,8 +20,6 @@ interface CountryData {
 export const CountryCards = ({ countries }: { countries: CountryData[] }) => {
   const { countryTab } = useCountryTabsHook();
 
-  console.log({ countryTab });
-
   return (
     <>
       {countries?.map((country: CountryData) => (
@@ -30,7 +29,7 @@ export const CountryCards = ({ countries }: { countries: CountryData[] }) => {
           href={`/esims/${getCountryUrlBasedOnCountryCode(country.code)}`}
         >
           <Image
-            src={`/flags/${country.code.toLowerCase()}.png`}
+            src={`/flags/${GLOBAL_COUNTRIES_CODES.includes(country.code) ? "global" : country.code.toLowerCase()}.png`}
             width={26}
             height={26}
             alt={country.name}
