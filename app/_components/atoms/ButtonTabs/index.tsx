@@ -9,11 +9,13 @@ import { cn } from "@/app/_utils";
 import { ButtonTabsProps, buttonTabsVariants } from "@/app/_types/cva";
 
 const ButtonTabs = forwardRef<HTMLButtonElement, ButtonTabsProps>(
-  ({ variant, isActive, className, children, ...props }, ref) => {
+  ({ variant, isActive, isDisabled, className, children, ...props }, ref) => {
     return (
       <button
         ref={ref}
-        className={cn(buttonTabsVariants({ variant, isActive, className }))}
+        className={cn(
+          buttonTabsVariants({ variant, isActive, isDisabled, className })
+        )}
         {...props}
       >
         {children}

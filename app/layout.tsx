@@ -3,15 +3,12 @@ import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
 // organism
 import { Navigation } from "@/app/_components/organisms/Navigation";
 
 import { OPENGRAPH_METADATA } from "@/app/_constants";
 
-// export const dynamic = "force-dynamic";
-// export const revalidate = 0;
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {

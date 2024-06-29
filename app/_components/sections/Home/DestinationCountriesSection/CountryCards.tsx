@@ -1,15 +1,13 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { IconArrowRight } from "@tabler/icons-react";
 
-// hooks
-// import { useCountryGrid } from "@/app/_hooks";
-
-// atoms
 import { Anchor } from "@/app/_components/atoms";
+
 import { getCountryUrlBasedOnCountryCode } from "@/app/_utils";
+
+import { useCountryTabsHook } from "@/app/_hooks";
 
 interface CountryData {
   name: string;
@@ -18,32 +16,16 @@ interface CountryData {
   updatedAt: string;
 }
 
-interface CountryGridProps {
-  countries: {
-    ok: boolean;
-    message: string;
-    data: CountryData[];
-  };
-}
+export const CountryCards = ({ countries }: { countries: CountryData[] }) => {
+  const { countryTab } = useCountryTabsHook();
 
-export const CountryCard = ({ countries }: CountryGridProps) => {
-  // const { filteredCountries } = useCountryGrid({
-  // countries: countries,
-  //});
-
-  if (countries.data && countries.data.length === 0) {
-    return (
-      <div className="w-full rounded-lg bg-zinc-900 px-5 py-10 text-center text-white">
-        No countries available
-      </div>
-    );
-  }
+  console.log({ countryTab });
 
   return (
-    <div className="grid grid-cols-1 gap-x-3 gap-y-4 md:grid-cols-3 lg:grid-cols-4">
-      {countries.data?.map((country, index) => (
+    <>
+      {countries?.map((country: CountryData) => (
         <Anchor
-          key={index}
+          key={country.code}
           className="flex items-center gap-4 rounded-lg bg-zinc-900 px-5 py-4"
           href={`/esims/${getCountryUrlBasedOnCountryCode(country.code)}`}
         >
@@ -57,6 +39,6 @@ export const CountryCard = ({ countries }: CountryGridProps) => {
           <IconArrowRight size={24} color="white" />
         </Anchor>
       ))}
-    </div>
+    </>
   );
 };
