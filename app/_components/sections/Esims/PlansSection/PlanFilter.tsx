@@ -3,15 +3,16 @@
 // atoms
 import { ButtonTabs } from "@/app/_components/atoms";
 
-import { useEsimPlansStore } from "@/app/_stores";
 import { capitalizeString } from "@/app/_utils";
+
+import { useEsimPlansFilterHook } from "@/app/_hooks";
 
 export const PlanFilter = ({
   planTypes,
 }: {
   planTypes: ["roaming", "local"];
 }) => {
-  const { planType, setPlanType } = useEsimPlansStore();
+  const { planType, setPlanType } = useEsimPlansFilterHook();
 
   return (
     <>

@@ -7,7 +7,6 @@ import { Anchor } from "@/app/_components/atoms";
 
 import { getCountryUrlBasedOnCountryCode } from "@/app/_utils";
 
-import { useCountryTabsHook } from "@/app/_hooks";
 import { GLOBAL_COUNTRIES_CODES } from "@/app/_constants";
 
 interface CountryData {
@@ -18,8 +17,6 @@ interface CountryData {
 }
 
 export const CountryCards = ({ countries }: { countries: CountryData[] }) => {
-  const { countryTab } = useCountryTabsHook();
-
   return (
     <>
       {countries?.map((country: CountryData) => (

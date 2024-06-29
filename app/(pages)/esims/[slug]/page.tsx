@@ -18,7 +18,6 @@ import {
   getCountryCodeBasedOnCountryUrl,
   getCountryNameBasedOnCountryUrl,
 } from "@/app/_utils";
-import { get } from "http";
 
 export async function generateMetadata({
   params,

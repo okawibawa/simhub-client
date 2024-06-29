@@ -3,14 +3,14 @@
 // atoms
 import { Button, Typography } from "@/app/_components/atoms";
 
-import { useEsimPlansStore } from "@/app/_stores";
+import { useEsimPlansFilterHook } from "@/app/_hooks";
 
 import { esimPlansEntity } from "@/app/_types/entities/esimPlans";
 
 import { capitalizeString, formatNumberToCurrency } from "@/app/_utils";
 
 export const PlanCard = ({ esimPlans }: { esimPlans: esimPlansEntity[] }) => {
-  const { planType } = useEsimPlansStore();
+  const { planType } = useEsimPlansFilterHook();
 
   return (
     <>
