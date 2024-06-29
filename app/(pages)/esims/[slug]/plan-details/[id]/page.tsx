@@ -5,7 +5,11 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import { Button, Typography } from "@/app/_components/atoms";
 
 // utils
-import { capitalizeString, formatNumberToCurrency } from "@/app/_utils";
+import {
+  capitalizeString,
+  formatNumberToCurrency,
+  getCountryNameBasedOnCountryUrl,
+} from "@/app/_utils";
 
 // constants
 import { OPENGRAPH_METADATA } from "@/app/_constants";
@@ -16,13 +20,18 @@ import { format } from "path";
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; id: string };
 }) {
+  const esimPlanDetails = await fetchEsimPlanById({ id: parseInt(params.id) });
+
+  const isFetchSuccessAndEsimPlanExists =
+    esimPlanDetails.ok && esimPlanDetails.data.length > 0;
+
   return {
-    title: `1 GB ${capitalizeString(params.slug)} eSIM Plan Details Valid for 7 Days`,
+    title: `${isFetchSuccessAndEsimPlanExists ? `${esimPlanDetails.data[0].data_amount}${esimPlanDetails.data[0].data_unit.toUpperCase()}` : ""} ${capitalizeString(params.slug)} eSIM Plan Details ${"Valid for " + esimPlanDetails.data[0].duration_in_days + " Days"}`,
     openGraph: {
       ...OPENGRAPH_METADATA,
-      title: `1 GB ${capitalizeString(params.slug)} eSIM Plan Details Valid for 7 Days`,
+      title: `${isFetchSuccessAndEsimPlanExists ? `${esimPlanDetails.data[0].data_amount}${esimPlanDetails.data[0].data_unit.toUpperCase()}` : ""} ${capitalizeString(params.slug)} eSIM Plan Details ${"Valid for " + esimPlanDetails.data[0].duration_in_days + " Days"}`,
     },
   };
 }
@@ -266,7 +275,7 @@ export default async function EsimsDetailPlan({
               {isFetchSuccessAndEsimPlanExists
                 ? capitalizeString(esimPlanDetails.data[0].plan)
                 : ""}{" "}
-              {capitalizeString(params.slug)} eSIM Plan
+              {getCountryNameBasedOnCountryUrl(params.slug)} eSIM Plan
             </Typography>
             <Typography as="body1">
               {formatNumberToCurrency(
