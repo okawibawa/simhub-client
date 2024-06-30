@@ -4,7 +4,7 @@ import { CountryCards } from "./CountryCards";
 const getCountries = async () => {
   "use server";
 
-  const countries = await fetch("http://localhost:8000/countries");
+  const countries = await fetch("https://simhub-api.okawibawa.dev/countries");
 
   return await countries.json();
 };
