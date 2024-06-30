@@ -1,16 +1,16 @@
-// import { countriesAction } from "@/app/_actions";
+import { countriesAction } from "@/app/_actions";
 import { CountryCards } from "./CountryCards";
 
-const getCountries = async () => {
-  "use server";
-
-  const countries = await fetch(`${process.env.HOST_API_URL}/countries`);
-
-  return await countries.json();
-};
+// const getCountries = async () => {
+//   "use server";
+//
+//   const countries = await fetch(`https://simhub-api.okawibawa.dev/countries`);
+//
+//   return await countries.json();
+// };
 
 export const CountryGrid = async () => {
-  const countries = await getCountries();
+  const countries = await countriesAction();
 
   if (!countries.ok && countries.code > 300) {
     return (
