@@ -1,8 +1,16 @@
-import { countriesAction } from "@/app/_actions";
+// import { countriesAction } from "@/app/_actions";
 import { CountryCards } from "./CountryCards";
 
+const getCountries = async () => {
+  "use server";
+
+  const countries = await fetch("http://localhost:8000/countries");
+
+  return await countries.json();
+};
+
 export const CountryGrid = async () => {
-  const countries = await countriesAction();
+  const countries = await getCountries();
 
   if (!countries.ok && countries.code > 300) {
     return (
