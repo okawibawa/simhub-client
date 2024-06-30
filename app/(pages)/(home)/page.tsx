@@ -9,6 +9,8 @@ import {
   ReviewSection,
 } from "@/app/_components/sections/Home";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   return (
     <main>
