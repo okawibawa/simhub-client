@@ -4,6 +4,8 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { IconLanguage, IconMenu2 } from "@tabler/icons-react";
+import Link from "next/link";
+import { getCookie } from "cookies-next";
 
 // stores
 import { useNavigationHeightStore } from "@/app/_stores";
@@ -12,17 +14,22 @@ import { useNavigationHeightStore } from "@/app/_stores";
 import { Anchor, Button, Select } from "@/app/_components/atoms";
 
 import { NavigationMobile } from "./NavigationMobile";
-import Link from "next/link";
 
 export const Navigation = () => {
+  const cookies = getCookie("usid");
   const { navigationBarHeight, setNavigationBarHeight } =
     useNavigationHeightStore();
 
   const [pastYMousePosition, setPastYMousePosition] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsLoggedIn(cookies !== undefined);
+  }, [cookies]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,25 +120,44 @@ export const Navigation = () => {
             </Select>
 
             <div className="flex items-center space-x-4">
-              <Link href="/login">
-                <Button
-                  variant="secondary"
-                  className="hidden text-zinc-800 hover:bg-zinc-50/10 lg:block"
-                >
-                  Login
-                </Button>
-              </Link>
-              <Link href="/register">
-                <Button>Register</Button>
-              </Link>
-              <IconMenu2
-                className="block lg:hidden"
-                size={24}
-                color={
-                  pathname !== "/" || pastYMousePosition ? "black" : "white"
-                }
-                onClick={handleIsMobileMenuOpen}
-              />
+              {isLoggedIn ? (
+                <>
+                  <Link href="/user/settings">
+                    <Button>My eSIMs</Button>
+                  </Link>
+
+                  <Link href="/user/settings" className="hidden lg:block">
+                    <Button>My Profile</Button>
+                  </Link>
+
+                  <IconMenu2
+                    className="block lg:hidden"
+                    size={24}
+                    color="black"
+                    onClick={handleIsMobileMenuOpen}
+                  />
+                </>
+              ) : (
+                <>
+                  <Link href="/login">
+                    <Button
+                      variant="secondary"
+                      className="hidden text-zinc-800 hover:bg-zinc-50/10 lg:block"
+                    >
+                      Login
+                    </Button>
+                  </Link>
+                  <Link href="/register">
+                    <Button>Register</Button>
+                  </Link>
+                  <IconMenu2
+                    className="block lg:hidden"
+                    size={24}
+                    color="black"
+                    onClick={handleIsMobileMenuOpen}
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -5,18 +5,19 @@ export const inputVariants = cva(
   [
     "rounded-lg",
     "p-4",
-    "bg-zinc-900",
+    "bg-zinc-200",
     "text-zinc-50",
     "focus:outline-none",
     "text-base",
     "leading-6",
     "w-full",
+    "text-zinc-800",
   ],
   {
     variants: {
       variant: {
         primary: [
-          "focus:bg-zinc-700",
+          "focus:bg-zinc-300",
           "focus:outline",
           "focus:outline-zinc-500",
         ],
