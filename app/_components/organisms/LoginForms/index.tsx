@@ -95,7 +95,7 @@ export const LoginForms = () => {
         Login
       </Button>
 
-      {state.message && (
+      {state && state.message && (
         <Typography as="body7" className="font-normal text-red-500">
           {state.message}
         </Typography>

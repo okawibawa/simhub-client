@@ -28,22 +28,24 @@ export default function UserPassword() {
 
         <form>
           <div className="mb-5">
-            <label htmlFor="name">New Password</label>
+            <label htmlFor="email" className="mb-3 inline-block text-zinc-800">
+              New Password
+            </label>
             <Input
               id="name"
-              placeholder="e.g. **********"
+              placeholder="password"
               type="password"
-              className="mt-3"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="mb-6">
-            <label htmlFor="email">Confirm Password</label>
+            <label htmlFor="email" className="mb-3 inline-block text-zinc-800">
+              Confirm Password
+            </label>
             <Input
               id="name"
-              placeholder="e.g. **********"
+              placeholder="password"
               type="password"
-              className="mt-3"
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
