@@ -63,6 +63,15 @@ export const registerAction = async (
 
     const sessionCookie = response.headers.get("Set-Cookie");
 
+    delete result.data.password;
+    delete result.data.createdAt;
+    delete result.data.updatedAt;
+
+    cookies().set({
+      name: "user",
+      value: JSON.stringify(result.data),
+    });
+
     if (sessionCookie) {
       const parsedCookies = parseSetCookieString(sessionCookie);
 
