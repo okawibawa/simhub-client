@@ -25,9 +25,14 @@ export const inputVariants = cva(
       isError: {
         true: ["border", "border-red-500"],
       },
+      isDisabled: {
+        true: ["bg-zinc-300", "text-zinc-500", "cursor-not-allowed"],
+      },
     },
     defaultVariants: {
       variant: "primary",
+      isDisabled: false,
+      isError: false,
     },
   }
 );
@@ -36,4 +41,5 @@ export interface InputProps
   extends ComponentProps<"input">,
     VariantProps<typeof inputVariants> {
   ref?: Ref<HTMLInputElement>;
+  isDisabled?: boolean | undefined;
 }

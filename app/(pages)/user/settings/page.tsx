@@ -42,6 +42,7 @@ export default function UserSettings() {
               type="email"
               className="mt-3"
               defaultValue={parsedCookies?.email}
+              isDisabled
             />
           </div>
 

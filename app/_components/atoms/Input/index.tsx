@@ -16,7 +16,10 @@ interface TogglePasswordProps {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ type = "text", variant, isError, className, ...props }, ref) => {
+  (
+    { type = "text", variant, isError, isDisabled, className, ...props },
+    ref
+  ) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleTogglePasswordVisibility = () => {
@@ -41,8 +44,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               className: type === "password" ? `${className} pr-12` : className,
               variant,
               isError,
+              isDisabled,
             })
           )}
+          disabled={isDisabled}
           {...props}
         />
         {type === "password" && (
