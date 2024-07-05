@@ -3,7 +3,12 @@ import { ApiError, InternalServerError, isApiError } from "../../_utils";
 export const fetchEsimPlans = async (countryCode: string) => {
   try {
     const response = await fetch(
-      `${process.env.HOST_API_URL}/esims/${countryCode}`
+      `${process.env.HOST_API_URL}/esims/${countryCode}`,
+      {
+        next: {
+          revalidate: 60 * 60 * 24,
+        },
+      }
     );
 
     if (!response.ok) {
@@ -23,7 +28,12 @@ export const fetchEsimPlans = async (countryCode: string) => {
 export const fetchEsimPlanById = async (id: number) => {
   try {
     const response = await fetch(
-      `${process.env.HOST_API_URL}/esims/plan-details/${id}`
+      `${process.env.HOST_API_URL}/esims/plan-details/${id}`,
+      {
+        next: {
+          revalidate: 60 * 60 * 24,
+        },
+      }
     );
 
     if (!response.ok) {

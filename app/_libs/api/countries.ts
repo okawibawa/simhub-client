@@ -2,7 +2,11 @@ import { ApiError, InternalServerError, isApiError } from "../../_utils";
 
 export const fetchCountries = async () => {
   try {
-    const response = await fetch(`${process.env.HOST_API_URL}/countries`);
+    const response = await fetch(`${process.env.HOST_API_URL}/countries`, {
+      next: {
+        revalidate: 60 * 60 * 24,
+      },
+    });
 
     if (!response.ok) {
       throw ApiError(response.status, "Error fetching countries");
@@ -29,6 +33,9 @@ export const fetchCountriesBySearchQuery = async (countryName: string) => {
       {
         method: "POST",
         body: payload,
+        next: {
+          revalidate: 60 * 60 * 24,
+        },
       }
     );
 
