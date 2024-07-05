@@ -9,7 +9,7 @@ export default function UserSettings() {
   const parsedCookies = cookis && JSON.parse(cookis.value);
 
   return (
-    <main className="mt-[82px]">
+    <main className="md:mt-[82px]">
       <section className="text-white">
         <div className="mb-6">
           <Typography as="body2" className="mb-2">

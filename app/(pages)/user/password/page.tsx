@@ -13,7 +13,7 @@ export default function UserPassword() {
   const [_confirmPassword, setConfirmPassword] = useState("");
 
   return (
-    <main className="mt-[82px]">
+    <main className="md:mt-[82px]">
       <section className="text-white">
         <div className="mb-6">
           <Typography as="body2" className="mb-2">
