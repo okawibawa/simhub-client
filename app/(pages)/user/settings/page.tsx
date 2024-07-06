@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 // atoms
 import { Button, Input, Typography } from "@/app/_components/atoms";
 
-import { UserUpdateForms } from "@/app/_components/organisms/UserUpdateForms";
+import { UserUpdateForms } from "@/app/_components/organisms";
 
 export default function UserSettings() {
   return (

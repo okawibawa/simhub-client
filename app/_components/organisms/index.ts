@@ -7,3 +7,5 @@ export * from "./UserSideNavigation";
 export * from "./PasswordRequirements";
 export * from "./LoginForms";
 export * from "./RegisterForms";
+export * from "./UserUpdatePasswordForms";
+export * from "./UserUpdateForms";

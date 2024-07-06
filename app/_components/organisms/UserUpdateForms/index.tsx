@@ -93,7 +93,7 @@ export const UserUpdateForms = () => {
       </div>
 
       <div className="flex justify-end">
-        <Button isLoading={isPending} aria-disabled={isPending}>
+        <Button type="submit" isLoading={isPending} aria-disabled={isPending}>
           Save Profile
         </Button>
       </div>
