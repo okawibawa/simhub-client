@@ -15,7 +15,6 @@ import {
 import { OPENGRAPH_METADATA } from "@/app/_constants";
 
 import { fetchEsimPlanById } from "@/app/_actions/esimActions";
-import { format } from "path";
 
 export async function generateMetadata({
   params,
