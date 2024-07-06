@@ -4,7 +4,8 @@ import { useTransition } from "react";
 import { useFormState } from "react-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { deleteCookie, setCookie, getCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
+import toast from "react-hot-toast";
 
 import { Input, Button, Typography } from "../../atoms";
 
@@ -31,6 +32,12 @@ export const UserUpdateForms = () => {
       ...(state?.fields || {}),
     },
   });
+
+  if (state?.status === 200) {
+    toast.success("Username updated successfully");
+
+    state.status = undefined;
+  }
 
   return (
     <form
@@ -67,7 +74,7 @@ export const UserUpdateForms = () => {
         />
       </div>
       {errors.username && (
-        <Typography as="body7" className="!mt-2 font-normal text-red-500">
+        <Typography as="body7" className="!mt-2 mb-2 font-normal text-red-500">
           {errors.username.message}
         </Typography>
       )}
@@ -84,12 +91,6 @@ export const UserUpdateForms = () => {
           isDisabled
         />
       </div>
-
-      {state?.status === 200 && state?.message && (
-        <Typography as="body7" className="font-normal">
-          {state.message}
-        </Typography>
-      )}
 
       <div className="flex justify-end">
         <Button isLoading={isPending} aria-disabled={isPending}>
