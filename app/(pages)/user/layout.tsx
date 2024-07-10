@@ -7,7 +7,7 @@ export default function UserLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="full-width h-full bg-black">
+    <div className="full-width h-fit bg-zinc-100">
       <div className="my-10 grid grid-cols-1 gap-5 md:grid-cols-[280px,1fr]">
         <UserSideNavigation />
         {children}

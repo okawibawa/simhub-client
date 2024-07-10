@@ -7,14 +7,12 @@ interface PasswordRequirementsProps {
 export const PasswordRequirements = ({
   password,
 }: PasswordRequirementsProps) => {
-  console.log({ password });
-
   return (
-    <div className="mb-6 rounded-md bg-zinc-950 px-4 py-3">
+    <div className="mb-6 rounded-md bg-zinc-200 px-4 py-3">
       <Typography as="body7" className="mb-2">
         Your password need to:
       </Typography>
-      <ul className="mx-4 list-disc space-y-2">
+      <ul className="mx-4 list-disc space-y-2 marker:text-zinc-800">
         <li>
           <Typography as="body7" className="font-normal">
             include both lower and upper case characters

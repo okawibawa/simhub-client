@@ -9,13 +9,13 @@ import { GUIDES } from "@/app/_constants";
 export const Guide = () => {
   return (
     <section
-      className="full-width bg-black py-24 text-center"
+      className="full-width bg-zinc-100 py-24 text-center"
       id="how-it-works"
     >
       <Typography as="subheading2" className="mb-5">
         How Our eSIM Works
       </Typography>
-      <Typography as="body3" className="mb-14 text-zinc-400">
+      <Typography as="body3" className="mb-14 text-zinc-600">
         Follow our 3-steps below on how the way eSIM will work on your device
       </Typography>
 
@@ -32,7 +32,7 @@ export const Guide = () => {
             <Typography as="body4" className="mb-4">
               {guide.title}
             </Typography>
-            <Typography as="body5" className="text-zinc-500">
+            <Typography as="body5" className="text-zinc-600">
               {guide.description}
             </Typography>
           </div>

@@ -22,7 +22,7 @@ export const CountryCards = ({ countries }: { countries: CountryData[] }) => {
       {countries?.map((country: CountryData) => (
         <Anchor
           key={country.code}
-          className="flex items-center gap-4 rounded-lg bg-zinc-900 px-5 py-4"
+          className="relative z-10 flex h-full items-center gap-4 rounded-lg bg-blue-600/80 px-5 py-4"
           href={`/esims/${getCountryUrlBasedOnCountryCode(country.code)}`}
         >
           <Image
@@ -31,7 +31,9 @@ export const CountryCards = ({ countries }: { countries: CountryData[] }) => {
             height={26}
             alt={country.name}
           />
-          <span className="flex-1">{country.name}</span>
+          <span className="flex-1 font-semibold text-white">
+            {country.name}
+          </span>
           <IconArrowRight size={24} color="white" />
         </Anchor>
       ))}

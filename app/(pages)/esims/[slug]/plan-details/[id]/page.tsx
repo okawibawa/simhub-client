@@ -5,40 +5,65 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import { Button, Typography } from "@/app/_components/atoms";
 
 // utils
-import { capitalizeString } from "@/app/_utils";
+import {
+  capitalizeString,
+  formatNumberToCurrency,
+  getCountryNameBasedOnCountryUrl,
+} from "@/app/_utils";
 
 // constants
 import { OPENGRAPH_METADATA } from "@/app/_constants";
 
+import { fetchEsimPlanById } from "@/app/_actions/esimActions";
+
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; id: string };
 }) {
+  const esimPlanDetails = await fetchEsimPlanById({ id: parseInt(params.id) });
+
+  const isFetchSuccessAndEsimPlanExists =
+    esimPlanDetails.ok && esimPlanDetails.data.length > 0;
+
   return {
-    title: `1 GB ${capitalizeString(params.slug)} eSIM Plan Details Valid for 7 Days`,
+    title: `${isFetchSuccessAndEsimPlanExists ? `${esimPlanDetails.data[0].data_amount}${esimPlanDetails.data[0].data_unit.toUpperCase()}` : ""} ${capitalizeString(params.slug)} eSIM Plan Details ${"Valid for " + esimPlanDetails.data[0].duration_in_days + " Days"}`,
     openGraph: {
       ...OPENGRAPH_METADATA,
-      title: `1 GB ${capitalizeString(params.slug)} eSIM Plan Details Valid for 7 Days`,
+      title: `${isFetchSuccessAndEsimPlanExists ? `${esimPlanDetails.data[0].data_amount}${esimPlanDetails.data[0].data_unit.toUpperCase()}` : ""} ${capitalizeString(params.slug)} eSIM Plan Details ${"Valid for " + esimPlanDetails.data[0].duration_in_days + " Days"}`,
     },
   };
 }
 
-export default function EsimsDetailPlan({
+export default async function EsimsDetailPlan({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; id: string };
 }) {
+  const esimPlanDetails = await fetchEsimPlanById({ id: parseInt(params.id) });
+
+  const isFetchSuccessAndEsimPlanExists =
+    esimPlanDetails.ok && esimPlanDetails.data.length > 0;
+
   return (
-    <main className="full-width bg-black py-5">
+    <main className="full-width bg-zinc-100 py-5">
       <section>
         <Typography as="body4" className="mb-6 flex items-center gap-2">
           <IconArrowLeft />
           eSIM Plans
         </Typography>
 
+        {isFetchSuccessAndEsimPlanExists ? null : (
+          <div className="mb-4 rounded-xl border border-red-700 bg-red-500 p-4">
+            <Typography as="body5" className="text-sm">
+              Sorry, we are having some issues while fetching eSIM plans. Please
+              try again later or contact support.
+            </Typography>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 gap-2 lg:grid-cols-3">
-          <div className="space-y-4 rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-5 lg:col-span-2">
+          <div className="space-y-4 rounded-xl border border-zinc-600 bg-zinc-100 px-4 py-5 lg:col-span-2">
             <div>
               <Typography as="body3" className="mb-4">
                 Product Information
@@ -79,11 +104,9 @@ export default function EsimsDetailPlan({
                   </div>
 
                   <div>
-                    <Typography as="body5" className="text-zinc-50">
-                      Provider
-                    </Typography>
+                    <Typography as="body5">Provider</Typography>
 
-                    <Typography as="body5" className="text-zinc-400">
+                    <Typography as="body5" className="text-zinc-800">
                       Claro/Telefonica
                     </Typography>
                   </div>
@@ -107,11 +130,9 @@ export default function EsimsDetailPlan({
                   </div>
 
                   <div>
-                    <Typography as="body5" className="text-zinc-50">
-                      Network
-                    </Typography>
+                    <Typography as="body5">Network</Typography>
 
-                    <Typography as="body5" className="text-zinc-400">
+                    <Typography as="body5" className="text-zinc-800">
                       3G/LTE
                     </Typography>
                   </div>
@@ -133,11 +154,9 @@ export default function EsimsDetailPlan({
                   </div>
 
                   <div>
-                    <Typography as="body5" className="text-zinc-50">
-                      Supported
-                    </Typography>
+                    <Typography as="body5">Supported</Typography>
 
-                    <Typography as="body5" className="text-zinc-400">
+                    <Typography as="body5" className="text-zinc-800">
                       Data only (no calls)
                     </Typography>
                   </div>
@@ -159,11 +178,9 @@ export default function EsimsDetailPlan({
                   </div>
 
                   <div>
-                    <Typography as="body5" className="text-zinc-50">
-                      eKYC
-                    </Typography>
+                    <Typography as="body5">eKYC</Typography>
 
-                    <Typography as="body5" className="text-zinc-400">
+                    <Typography as="body5" className="text-zinc-800">
                       Domestic/Local registration (available)
                     </Typography>
                   </div>
@@ -171,18 +188,18 @@ export default function EsimsDetailPlan({
               </div>
 
               <div>
-                <Typography as="body5" className="text-zinc-50">
+                <Typography as="body5">
                   - Enjoy your trip with Unlimited data
                 </Typography>
-                <Typography as="body5" className="text-zinc-50">
+                <Typography as="body5">
                   - You can use all social media without VPN
                 </Typography>
-                <Typography as="body5" className="mb-4 text-zinc-50">
+                <Typography as="body5" className="mb-4">
                   - Eligibility period and data begin in 24 hours from the time
                   you activate your eSIM following registration
                 </Typography>
 
-                <Typography as="body5" className="text-zinc-400">
+                <Typography as="body5" className="text-zinc-800">
                   *You will receive a QR code immediately after you make a
                   purchase using your registered email address. To activate it,
                   you can scan the QR code with your smartphone and it will be
@@ -196,27 +213,27 @@ export default function EsimsDetailPlan({
                 Instructions
               </Typography>
 
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - Before making a purchase, make sure your device supports eSIM
                 services and has 5G capability.
               </Typography>
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - Ensure you have an available internet connection, either
                 through Wi-Fi or your physical SIM card.
               </Typography>
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - For iPhone users: Open Settings - Cellular - Add eSIM.
               </Typography>
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - For Android users: Open Settings - Connections - SIM Manager -
                 Add eSIM.
               </Typography>
-              <Typography as="body5" className="mb-4 text-zinc-50">
+              <Typography as="body5" className="mb-4">
                 - Wait for the installation process to complete and the
                 notification to be received.
               </Typography>
 
-              <Typography as="body5" className="text-zinc-400">
+              <Typography as="body5" className="text-zinc-800">
                 Experience better and faster internet speeds with 5G e-SIM!
                 Activate it now and enjoy the convenience.
               </Typography>
@@ -227,28 +244,37 @@ export default function EsimsDetailPlan({
                 Policy
               </Typography>
 
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - The eSIM includes unlimited data for the contracted time.
                 However, please note that the carrier may reserve the right to
                 apply a Fair Usage Policy.
               </Typography>
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - The check-in (purchase confirmation) period is 180 days from
                 the date of product purchase, and you can apply for a refund
                 during this period.
               </Typography>
-              <Typography as="body5" className="text-zinc-50">
+              <Typography as="body5">
                 - Exchanges/refunds are not possible after check-in (purchase
                 confirmation).
               </Typography>
             </div>
           </div>
 
-          <div className="row-start-1 h-fit rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-5 lg:col-start-3 lg:row-start-auto">
+          <div className="row-start-1 h-fit rounded-xl border border-zinc-600 bg-zinc-100 px-4 py-5 lg:col-start-3 lg:row-start-auto">
             <Typography as="body3" className="mb-2">
-              {capitalizeString(params.slug)} eSIM Plan
+              {isFetchSuccessAndEsimPlanExists
+                ? capitalizeString(esimPlanDetails.data[0].plan)
+                : ""}{" "}
+              {getCountryNameBasedOnCountryUrl(params.slug)} eSIM Plan
             </Typography>
-            <Typography as="body1">$22</Typography>
+            <Typography as="body1">
+              {formatNumberToCurrency(
+                isFetchSuccessAndEsimPlanExists
+                  ? esimPlanDetails.data[0].price_in_usd
+                  : 0
+              )}
+            </Typography>
 
             <div className="my-4 h-[1px] w-full bg-zinc-700" />
 
@@ -257,21 +283,31 @@ export default function EsimsDetailPlan({
                 <Typography as="body5" className="mb-1 text-zinc-500">
                   Coverage
                 </Typography>
-                <Typography as="body4">13 Countries</Typography>
+                <Typography as="body4">
+                  {esimPlanDetails.ok ? esimPlanDetails.data[0].name : "-"}
+                </Typography>
               </div>
 
               <div>
                 <Typography as="body5" className="mb-1 text-zinc-500">
                   Validity
                 </Typography>
-                <Typography as="body4">7 days</Typography>
+                <Typography as="body4">
+                  {esimPlanDetails.ok
+                    ? `${esimPlanDetails.data[0].duration_in_days} days`
+                    : "-"}{" "}
+                </Typography>
               </div>
 
               <div>
                 <Typography as="body5" className="mb-1 text-zinc-500">
                   Data
                 </Typography>
-                <Typography as="body4">Unlimited</Typography>
+                <Typography as="body4">
+                  {esimPlanDetails.ok
+                    ? `${esimPlanDetails.data[0].data_amount}${esimPlanDetails.data[0].data_unit.toUpperCase()}`
+                    : "-"}
+                </Typography>
               </div>
             </div>
 

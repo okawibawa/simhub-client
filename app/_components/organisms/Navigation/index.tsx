@@ -2,6 +2,8 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { getCookie } from "cookies-next";
 import { usePathname } from "next/navigation";
 import { IconLanguage, IconMenu2 } from "@tabler/icons-react";
 
@@ -12,17 +14,22 @@ import { useNavigationHeightStore } from "@/app/_stores";
 import { Anchor, Button, Select } from "@/app/_components/atoms";
 
 import { NavigationMobile } from "./NavigationMobile";
-import Link from "next/link";
 
 export const Navigation = () => {
+  const cookies = getCookie("usid");
   const { navigationBarHeight, setNavigationBarHeight } =
     useNavigationHeightStore();
 
   const [pastYMousePosition, setPastYMousePosition] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsLoggedIn(cookies !== undefined);
+  }, [cookies]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,7 +79,7 @@ export const Navigation = () => {
         ref={navRef}
         className={`fixed left-0 top-0 z-50 w-full py-[18px] transition-all duration-200 ${
           pathname !== "/" || pastYMousePosition
-            ? "bg-zinc-900 shadow-lg shadow-zinc-400/5"
+            ? "bg-zinc-100/30 shadow-lg shadow-zinc-600/10 backdrop-blur-sm"
             : "bg-transparent"
         }`}
       >
@@ -81,7 +88,7 @@ export const Navigation = () => {
             <div className="flex-1">
               <Anchor href="/" className="inline-block w-fit">
                 <Image
-                  src="/simhub-logo-light.svg"
+                  src="/simhub-logo-dark.svg"
                   width={110}
                   height={32}
                   alt="logo"
@@ -92,13 +99,13 @@ export const Navigation = () => {
             </div>
 
             <div className="hidden space-x-2 lg:block">
-              <Anchor href="/#destination" className="px-3">
+              <Anchor href="/#destination" className="px-3 text-zinc-800">
                 Destination
               </Anchor>
-              <Anchor href="/#how-it-works" className="px-3">
+              <Anchor href="/#how-it-works" className="px-3 text-zinc-800">
                 How it Works
               </Anchor>
-              <Anchor href="/#contact-us" className="px-3">
+              <Anchor href="/#contact-us" className="px-3 text-zinc-800">
                 Contact Us
               </Anchor>
             </div>
@@ -106,30 +113,51 @@ export const Navigation = () => {
             <Select
               leftIcon={<IconLanguage />}
               onChange={(e) => console.log(e)}
-              className="hidden lg:flex"
+              className="hidden text-zinc-800 lg:flex"
             >
               <option value="en">English</option>
               <option value="es">Spanish</option>
             </Select>
 
             <div className="flex items-center space-x-4">
-              <Link href="/login">
-                <Button
-                  variant="secondary"
-                  className="hidden outline-white hover:bg-zinc-50/10 lg:block"
-                >
-                  Login
-                </Button>
-              </Link>
-              <Link href="/register">
-                <Button>Register</Button>
-              </Link>
-              <IconMenu2
-                className="block lg:hidden"
-                size={24}
-                color="white"
-                onClick={handleIsMobileMenuOpen}
-              />
+              {isLoggedIn ? (
+                <>
+                  <Link href="/user/settings">
+                    <Button>My eSIMs</Button>
+                  </Link>
+
+                  <Link href="/user/settings" className="hidden lg:block">
+                    <Button>My Profile</Button>
+                  </Link>
+
+                  <IconMenu2
+                    className="block lg:hidden"
+                    size={24}
+                    color="black"
+                    onClick={handleIsMobileMenuOpen}
+                  />
+                </>
+              ) : (
+                <>
+                  <Link href="/login">
+                    <Button
+                      variant="secondary"
+                      className="hidden text-zinc-800 hover:bg-zinc-50/10 lg:block"
+                    >
+                      Login
+                    </Button>
+                  </Link>
+                  <Link href="/register">
+                    <Button>Register</Button>
+                  </Link>
+                  <IconMenu2
+                    className="block lg:hidden"
+                    size={24}
+                    color="black"
+                    onClick={handleIsMobileMenuOpen}
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>

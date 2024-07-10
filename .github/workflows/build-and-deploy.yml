@@ -19,7 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: >
-          docker build -t ${{ env.DOCKER_IMAGE }}:development .
+          docker build
+          --build-arg HOST_API_URL=${{ vars.HOST_API_URL }}
+          -t ${{ env.DOCKER_IMAGE }}:development .
 
   deploy:
     runs-on: self-hosted

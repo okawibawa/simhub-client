@@ -19,15 +19,15 @@ export default function Login() {
         />
 
         <div className="mx-auto w-full max-w-[580px] rounded-xl bg-white/30 p-2 backdrop-blur-sm">
-          <div className="w-full rounded-xl bg-black p-7">
+          <div className="w-full rounded-xl bg-zinc-100 p-7">
             <Link href="/" className="inline-block">
               <Image
-                src="/simhub-logo-light.svg"
+                src="/simhub-logo-dark.svg"
                 width={110}
                 height={32}
                 alt="logo"
                 placeholder="blur"
-                blurDataURL="/simhub-logo-light.svg"
+                blurDataURL="/simhub-logo-dark.svg"
                 className="mb-7"
               />
             </Link>
@@ -42,10 +42,10 @@ export default function Login() {
 
             <Typography
               as="body7"
-              className="text-center font-normal text-zinc-400"
+              className="text-center font-normal text-zinc-600"
             >
               Don&apos;t have an account?{" "}
-              <Anchor href="/register" className="inline-block text-orange-500">
+              <Anchor href="/register" className="inline-block text-blue-500">
                 Sign up
               </Anchor>
             </Typography>

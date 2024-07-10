@@ -1,11 +1,10 @@
-"use client";
-
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { IconX, IconChevronDown } from "@tabler/icons-react";
 
 // atoms
 import { Anchor, Button } from "@/app/_components/atoms";
-import { useEffect, useState } from "react";
 
 interface NavigationMobileProps {
   isMobileMenuOpen: boolean;
@@ -44,27 +43,41 @@ export const NavigationMobile = ({
       }`}
     >
       <div className="mb-5 flex h-[42px] items-center justify-between">
-        <Image
-          src="/simhub-logo-dark.svg"
-          width={110}
-          placeholder="blur"
-          height={32}
-          alt="logo"
-          blurDataURL="/simhub-logo-dark.svg"
-        />
+        <Link href="/">
+          <Image
+            src="/simhub-logo-dark.svg"
+            width={110}
+            placeholder="blur"
+            height={32}
+            alt="logo"
+            blurDataURL="/simhub-logo-dark.svg"
+          />
+        </Link>
         <IconX size={24} color="black" onClick={setIsMobileMenuOpen} />
       </div>
 
       <Button className="mb-2 w-full">Login</Button>
 
       <div className="divide-y divide-solid divide-zinc-200">
-        <Anchor href="#" className="mb-2 block py-4 text-zinc-900" size="lg">
+        <Anchor
+          href="/#destination"
+          className="mb-2 block py-4 text-zinc-900"
+          size="lg"
+        >
           Destination
         </Anchor>
-        <Anchor href="#" className="mb-2 block py-4 text-zinc-900" size="lg">
+        <Anchor
+          href="/#how-it-works"
+          className="mb-2 block py-4 text-zinc-900"
+          size="lg"
+        >
           How it Works
         </Anchor>
-        <Anchor href="#" className="mb-2 block py-4 text-zinc-900" size="lg">
+        <Anchor
+          href="/#contact-us"
+          className="mb-2 block py-4 text-zinc-900"
+          size="lg"
+        >
           Contact Us
         </Anchor>
         <button

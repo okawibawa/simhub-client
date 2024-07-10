@@ -36,26 +36,15 @@ export async function generateMetadata({
 export default function Esims({ params }: { params: { slug: string } }) {
   return (
     <main>
-      <section className="bg-black">
-        <div className="relative bottom-0 mb-6 h-[240px] max-h-[240px] w-full">
-          <Image
-            src="/esims-background.jpg"
-            fill
-            alt="Esims background"
-            style={{ objectFit: "cover" }}
-          />
-        </div>
-
-        <div className="grid-content">
-          <Typography as="subheading2" className="mb-16">
+      <section className="bg-zinc-100">
+        <div className="grid-content mt-6">
+          <Typography as="subheading2" className="mb-10">
             {getCountryNameBasedOnCountryUrl(params.slug)} eSIM Plans
           </Typography>
 
-          <div className="mb-10">
-            <Typography as="body2" className="text-zinc-50">
-              Recommendation for you
-            </Typography>
-          </div>
+          <Typography as="body2" className="mb-10">
+            Recommendation for you
+          </Typography>
 
           <PlansSection slug={getCountryCodeBasedOnCountryUrl(params.slug)!} />
         </div>

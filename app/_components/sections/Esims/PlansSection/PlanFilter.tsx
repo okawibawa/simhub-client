@@ -5,14 +5,19 @@ import { ButtonTabs } from "@/app/_components/atoms";
 
 import { capitalizeString } from "@/app/_utils";
 
-import { useEsimPlansFilterHook } from "@/app/_hooks";
+import { useEsimPlansStore } from "@/app/_stores";
+import { useEffect } from "react";
 
 export const PlanFilter = ({
   planTypes,
 }: {
   planTypes: ["roaming", "local"];
 }) => {
-  const { planType, setPlanType } = useEsimPlansFilterHook();
+  const { planType, setPlanType, resetPlanType } = useEsimPlansStore();
+
+  useEffect(() => {
+    resetPlanType();
+  }, []);
 
   return (
     <>
@@ -44,7 +49,7 @@ export const PlanFilter = ({
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#57a8e5"
+                stroke="#fff"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -69,7 +74,7 @@ export const PlanFilter = ({
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#57a8e5"
+                stroke="#fff"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"

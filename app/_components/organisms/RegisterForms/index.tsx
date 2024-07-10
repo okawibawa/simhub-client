@@ -39,8 +39,6 @@ export const RegisterForms = () => {
         startTransition(async () => {
           const formData = new FormData();
 
-          console.log(data);
-
           formData.append("email", data.email);
           formData.append("username", data.username);
           formData.append("password", data.password);

@@ -81,7 +81,7 @@ export const LoginForms = () => {
       )}
 
       <div className="flex items-center justify-end">
-        <Anchor href="#" className="text-zinc-400">
+        <Anchor href="#" className="text-zinc-600">
           Forgot password?
         </Anchor>
       </div>
@@ -95,7 +95,7 @@ export const LoginForms = () => {
         Login
       </Button>
 
-      {state.message && (
+      {state && state.message && (
         <Typography as="body7" className="font-normal text-red-500">
           {state.message}
         </Typography>

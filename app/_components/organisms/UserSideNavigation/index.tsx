@@ -17,13 +17,13 @@ export const UserSideNavigation = () => {
       <div className="flex flex-col">
         <Anchor
           href="/user/settings"
-          className={`mb-4 border-l-2 px-4 py-2 pl-[14px] text-base font-medium text-zinc-400 hover:text-white ${pathname === "/user/settings" ? "border-zinc-50 text-white" : "border-transparent"}`}
+          className={`mb-4 border-l-2 px-4 py-2 pl-[14px] text-base font-medium text-zinc-700 hover:text-zinc-800 ${pathname === "/user/settings" ? "border-zinc-800 text-zinc-800" : "border-transparent"}`}
         >
           Account Settings
         </Anchor>
         <Anchor
           href="/user/password"
-          className={`border-l-2 px-4 py-2 pl-[14px] text-base font-medium text-zinc-400 hover:text-white ${pathname === "/user/password" ? "border-zinc-50 text-white" : "border-transparent"}`}
+          className={`border-l-2 px-4 py-2 pl-[14px] text-base font-medium text-zinc-700 hover:text-zinc-800 ${pathname === "/user/password" ? "border-zinc-800 text-zinc-800" : "border-transparent"}`}
         >
           Password
         </Anchor>
