@@ -21,8 +21,6 @@ export const UserUpdateForms = () => {
 
   const user = getCookie("user");
 
-  console.log(user);
-
   const parsedUser = user && JSON.parse(user);
 
   const {
