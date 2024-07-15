@@ -2,7 +2,6 @@
 
 import { updateUser as updateUserApi } from "@/app/_libs/api/users";
 import { isApiError } from "../../_utils";
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
 interface LoginState {

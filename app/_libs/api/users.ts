@@ -28,3 +28,24 @@ export const updateUser = async (data: FormData) => {
     throw InternalServerError;
   }
 };
+
+export const logoutUser = async (data: FormData) => {
+  try {
+    const response = await fetch(`${process.env.HOST_API_URL}/auth/sign-out`, {
+      method: "POST",
+      body: data,
+      credentials: "include",
+    });
+
+    return await response.json();
+  } catch (error) {
+    if (error instanceof Error) {
+      return { message: error.message };
+    } else {
+      return {
+        type: "UnknownError",
+        message: "An unknown error occurred. Please contact admin.",
+      };
+    }
+  }
+};

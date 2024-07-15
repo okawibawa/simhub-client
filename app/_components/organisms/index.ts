@@ -9,3 +9,4 @@ export * from "./LoginForms";
 export * from "./RegisterForms";
 export * from "./UserUpdatePasswordForms";
 export * from "./UserUpdateForms";
+export * from "./Dialog";

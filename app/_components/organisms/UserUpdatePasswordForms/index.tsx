@@ -91,7 +91,7 @@ export const UserUpdatePasswordForms = () => {
           </label>
           <Input
             id="confirm-password"
-            placeholder="password"
+            placeholder="confirm password"
             type="password"
             aria-disabled={isPending}
             isDisabled={isPending}
