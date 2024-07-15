@@ -1,7 +1,5 @@
-import { cookies } from "next/headers";
-
 // atoms
-import { Button, Input, Typography } from "@/app/_components/atoms";
+import { Typography } from "@/app/_components/atoms";
 
 import { UserUpdateForms } from "@/app/_components/organisms";
 

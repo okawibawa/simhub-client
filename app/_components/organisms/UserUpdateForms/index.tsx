@@ -20,7 +20,10 @@ export const UserUpdateForms = () => {
   });
 
   const user = getCookie("user");
-  const parsedUser = user && JSON.parse(user)[0];
+
+  console.log(user);
+
+  const parsedUser = user && JSON.parse(user);
 
   const {
     register,

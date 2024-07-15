@@ -27,7 +27,7 @@ export const updateUser = async (
 
     cookies().set({
       name: "user",
-      value: JSON.stringify(updatedUser.data),
+      value: JSON.stringify(updatedUser.data[0]),
     });
 
     return {
