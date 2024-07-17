@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import {
   ApiError,
   InternalServerError,
@@ -15,11 +16,10 @@ export const updateUser = async (data: FormData) => {
 
     const response = await fetch(`${process.env.HOST_API_URL}/users/${id}`, {
       method: "PUT",
-      credentials: "include",
-      body: data,
-      next: {
-        revalidate: 60 * 60 * 24,
+      headers: {
+        Cookie: cookies().toString(),
       },
+      body: data,
     });
 
     if (!response.ok && response.status === 401) {
@@ -48,8 +48,10 @@ export const logoutUser = async (data: FormData) => {
   try {
     const response = await fetch(`${process.env.HOST_API_URL}/auth/sign-out`, {
       method: "POST",
+      headers: {
+        Cookie: cookies().toString(),
+      },
       body: data,
-      credentials: "include",
     });
 
     if (!response.ok && response.status === 401) {
