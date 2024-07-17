@@ -22,13 +22,15 @@ export const Navigation = () => {
 
   const [pastYMousePosition, setPastYMousePosition] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | undefined>(undefined);
 
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setIsLoggedIn(cookies !== undefined);
+    setTimeout(() => {
+      setIsLoggedIn(cookies !== undefined);
+    }, 1000);
   }, [cookies]);
 
   useEffect(() => {
@@ -120,14 +122,32 @@ export const Navigation = () => {
             </Select>
 
             <div className="flex items-center space-x-4">
-              {isLoggedIn ? (
+              {isLoggedIn === undefined ? (
                 <>
-                  <Link href="/user/settings">
-                    <Button>My eSIMs</Button>
+                  <Link href="/login">
+                    <Button className="w-[100px] animate-pulse bg-blue-500 text-transparent">
+                      Login
+                    </Button>
+                  </Link>
+                  <Link href="/register">
+                    <Button className="w-[100px] animate-pulse bg-blue-500 text-transparent">
+                      Register
+                    </Button>
+                  </Link>
+                </>
+              ) : isLoggedIn ? (
+                <>
+                  <Link href="#">
+                    <Button
+                      variant="secondary"
+                      className="w-[100px] text-zinc-800 hover:bg-blue-400 hover:text-zinc-50"
+                    >
+                      My eSIMs
+                    </Button>
                   </Link>
 
                   <Link href="/user/settings" className="hidden lg:block">
-                    <Button>My Profile</Button>
+                    <Button className="w-[100px]">My Profile</Button>
                   </Link>
 
                   <IconMenu2
@@ -142,13 +162,13 @@ export const Navigation = () => {
                   <Link href="/login">
                     <Button
                       variant="secondary"
-                      className="hidden text-zinc-800 hover:bg-zinc-50/10 lg:block"
+                      className="hidden w-[100px] text-zinc-800 hover:bg-zinc-50/10 lg:block"
                     >
                       Login
                     </Button>
                   </Link>
                   <Link href="/register">
-                    <Button>Register</Button>
+                    <Button className="w-[100px]">Register</Button>
                   </Link>
                   <IconMenu2
                     className="block lg:hidden"

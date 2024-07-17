@@ -15,6 +15,7 @@ const createCustomError = (name: string) => (code: number, message: string) => {
 };
 
 export const ApiError = createCustomError("ApiError");
+export const UnauthorizedError = createCustomError("UnauthorizedError");
 export const InternalServerError = createCustomError("InternalServerError")(
   500,
   "Internal Server Error"
@@ -24,5 +25,10 @@ export const isApiError = (error: unknown): error is CustomError => {
   return error instanceof Error && error.name === "ApiError" && "code" in error;
 };
 
-// export const NotFoundError = createCustomError(404, "Not Found");
-// export const UnauthorizedError = createCustomError(401, "Unauthorized");
+export const isUnauthorizedError = (error: unknown): error is CustomError => {
+  return (
+    error instanceof Error &&
+    error.name === "UnauthorizedError" &&
+    "code" in error
+  );
+};

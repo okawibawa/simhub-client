@@ -1,8 +1,10 @@
 "use server";
 
-import { updateUser as updateUserApi } from "@/app/_libs/api/users";
-import { isApiError } from "../../_utils";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+
+import { updateUser as updateUserApi } from "@/app/_libs/api/users";
+import { isApiError, isUnauthorizedError } from "../../_utils";
 
 interface LoginState {
   type?: string;
@@ -36,6 +38,10 @@ export const updateUser = async (
   } catch (error) {
     if (isApiError(error)) {
       return { ok: error.ok, status: error.code, message: error.message };
+    }
+
+    if (isUnauthorizedError(error)) {
+      redirect("/login");
     }
 
     return { ok: false, status: 500, message: "Something went wrong" };

@@ -15,7 +15,7 @@ export default function UserPassword() {
             Update Password
           </Typography>
           <Typography as="body5" className="text-zinc-500">
-            Update your password here
+            Here you can update your password
           </Typography>
         </div>
 

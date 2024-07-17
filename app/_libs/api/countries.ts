@@ -1,4 +1,10 @@
-import { ApiError, InternalServerError, isApiError } from "../../_utils";
+import {
+  ApiError,
+  InternalServerError,
+  isApiError,
+  isUnauthorizedError,
+  UnauthorizedError,
+} from "../../_utils";
 
 export const fetchCountries = async () => {
   try {
@@ -8,6 +14,10 @@ export const fetchCountries = async () => {
       },
     });
 
+    if (!response.ok && response.status === 401) {
+      throw UnauthorizedError(response.status, "Unauthorized");
+    }
+
     if (!response.ok) {
       throw ApiError(response.status, "Error fetching countries");
     }
@@ -15,6 +25,10 @@ export const fetchCountries = async () => {
     return await response.json();
   } catch (error: unknown) {
     if (isApiError(error)) {
+      throw error;
+    }
+
+    if (isUnauthorizedError(error)) {
       throw error;
     }
 
@@ -39,11 +53,13 @@ export const fetchCountriesBySearchQuery = async (countryName: string) => {
       }
     );
 
-    if (!response.ok) {
+    const result = await response.json();
+
+    if (!result.ok) {
       throw ApiError(response.status, "Error fetching countries");
     }
 
-    return await response.json();
+    return result;
   } catch (error: unknown) {
     if (isApiError(error)) {
       throw error;
