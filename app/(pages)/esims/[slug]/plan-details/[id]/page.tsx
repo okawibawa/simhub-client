@@ -1,8 +1,7 @@
 import Image from "next/image";
-import { IconArrowLeft } from "@tabler/icons-react";
 
 // atoms
-import { Button, Typography } from "@/app/_components/atoms";
+import { Anchor, Button, Typography } from "@/app/_components/atoms";
 
 // utils
 import {
@@ -15,6 +14,7 @@ import {
 import { OPENGRAPH_METADATA } from "@/app/_constants";
 
 import { fetchEsimPlanById } from "@/app/_actions/esimActions";
+import { BackButton } from "@/app/_components/organisms/BackButton";
 
 export async function generateMetadata({
   params,
@@ -48,10 +48,7 @@ export default async function EsimsDetailPlan({
   return (
     <main className="full-width bg-zinc-100 py-5">
       <section>
-        <Typography as="body4" className="mb-6 flex items-center gap-2">
-          <IconArrowLeft />
-          eSIM Plans
-        </Typography>
+        <BackButton />
 
         {isFetchSuccessAndEsimPlanExists ? null : (
           <div className="mb-4 rounded-xl border border-red-700 bg-red-500 p-4">
@@ -311,9 +308,11 @@ export default async function EsimsDetailPlan({
               </div>
             </div>
 
-            <Button variant="primary" className="my-t w-full">
-              Continue to Payment
-            </Button>
+            <Anchor href={`/esims/${params.slug}/checkout/1`}>
+              <Button variant="primary" className="my-t w-full">
+                Continue to Payment
+              </Button>
+            </Anchor>
           </div>
         </div>
       </section>
