@@ -12,12 +12,9 @@ export function middleware(request: NextRequest) {
 
   console.log(parsedCookies);
 
-  if (
-    !parsedCookies ||
-    (!parsedCookies?.includes("user") && !parsedCookies?.includes("usid"))
-  ) {
-    return Response.redirect("http://localhost:3000/login");
-  }
+  // if (!parsedCookies?.includes("user") || !parsedCookies?.includes("usid")) {
+  //   return Response.redirect("/login");
+  // }
 
   return NextResponse.next();
 }
