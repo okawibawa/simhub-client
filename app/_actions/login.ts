@@ -84,6 +84,14 @@ export const loginAction = async (
       });
     }
 
+    const returnUrl = cookies().get("returnUrl")?.value;
+
+    if (returnUrl) {
+      cookies().delete("returnUrl");
+
+      return redirect(returnUrl);
+    }
+
     redirect("/");
   } catch (error: any) {
     if (isRedirectError(error)) {
