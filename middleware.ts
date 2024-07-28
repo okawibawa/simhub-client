@@ -2,19 +2,19 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const userCookie = request.headers.get("cookie");
-  const parsedCookies =
-    userCookie &&
-    userCookie
-      .split(";")
-      .map((cookie) => cookie.trim().split("="))
-      .flat();
+  const userCookie = request.cookies.get("user");
+  const usidCookie = request.cookies.get("usid");
 
-  console.log(parsedCookies);
+  const isLoginPage = request.nextUrl.pathname === "/login";
+  const isRegisterPage = request.nextUrl.pathname === "/register";
 
-  // if (!parsedCookies?.includes("user") || !parsedCookies?.includes("usid")) {
-  //   return Response.redirect("/login");
-  // }
+  if ((!userCookie || !usidCookie) && !isLoginPage) {
+    return Response.redirect(new URL("/login", request.url));
+  }
+
+  if (userCookie && usidCookie && isLoginPage && isRegisterPage) {
+    return Response.redirect(new URL("/", request.url));
+  }
 
   return NextResponse.next();
 }
@@ -23,6 +23,8 @@ export const config = {
   matcher: [
     "/esims/:path/checkout/:id",
     "/user/:path",
-    "/((?!.*\\..*|_next).*)",
+    "/login",
+    "/register",
+    // "/((?!.*\\..*|_next).*)",
   ],
 };
