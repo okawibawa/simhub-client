@@ -18,10 +18,10 @@ export default function Register() {
         />
 
         <div className="mx-auto w-full max-w-[580px] rounded-xl bg-white/30 p-2 backdrop-blur-sm">
-          <div className="w-full rounded-xl bg-black p-7">
+          <div className="w-full rounded-xl bg-zinc-100 p-7">
             <Link href="/" className="inline-block">
               <Image
-                src="/simhub-logo-light.svg"
+                src="/simhub-logo-dark.svg"
                 width={110}
                 height={32}
                 alt="logo"
@@ -44,7 +44,7 @@ export default function Register() {
               className="text-center font-normal text-zinc-400"
             >
               Already have an account?{" "}
-              <Anchor href="/login" className="inline-block text-orange-500">
+              <Anchor href="/login" className="inline-block text-blue-500">
                 Login
               </Anchor>
             </Typography>

@@ -24,7 +24,6 @@ export const config = {
     "/esims/:path/checkout/:id",
     "/user/:path",
     "/login",
-    "/register",
     // "/((?!.*\\..*|_next).*)",
   ],
 };
